@@ -1,0 +1,141 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Widget Sections
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    
+; Launcher
+(defwidget launcher []
+    (box    :orientation "v"
+            :class "container-apps"
+        (box    :orientation "v"
+                :class "launcher"
+                :space-evenly "false"
+        (button :class "button-launcher"
+                :onclick "${launcher}" "󰑣"))))
+    
+; Screencap
+(defwidget screencap []
+    (box    :orientation "v"
+            :class "container-apps"
+        (box    :orientation "v"
+                :class "screencap"
+                :space-evenly "false"
+        (button :class "button-screencap"
+                :onclick "echo ha" ""))))
+
+; Workspace
+(defwidget workspace []
+    (box    :orientation "v"
+            :class "container-workspace"
+    (literal    :content workspace)))
+(deflisten workspace "$HOME/.config/eww/scripts/workspace")
+    
+; Brightness control
+(defwidget brightness []
+    (box    :orientation "v"
+            :class "container"
+        (eventbox   :onhover "${eww} update brightness=true"
+                    :onhoverlost "${eww} update brightness=false"
+            (box    :orientation "v"
+                    :class "brightness"
+		            :space-evenly "false"
+            (revealer   :transition "slideup"
+                        :reveal brightness
+                        :duration "550ms"
+	        (scale  :class "bar-brightness"
+                    :value current-brightness
+                    :orientation "v"
+                    :flipped true
+                    :max 100
+                    :min 0
+                    :onchange "brightnessctl set {}%"))
+	        (button :onclick "echo hi"
+                    :class "button-brightness" "")))))
+(defpoll current-brightness :interval "1s" "brightnessctl info | grep 'Current brightness' | awk '{print $4}' | tr -d '()%'")
+(defvar brightness false)
+
+; Volume control
+(defwidget volume []
+    (box    :orientation "v"
+            :class "container"
+        (eventbox   :onhover "${eww} update volume=true"
+                    :onhoverlost "${eww} update volume=false"
+            (box    :orientation "v"
+                    :class "volume"
+                    :space-evenly "false"
+            (revealer   :transition "slideup"
+                        :reveal volume
+                        :duration "550ms"
+            (scale  :class "bar-volume"
+                    :value current-volume
+                    :orientation "v"
+                    :flipped true
+                    :max 100
+                    :min 0
+                    :onchange "wpctl set-volume @DEFAULT_SINK@ {}%"))
+            (button :onclick "echo hi"
+                    :class "button-volume" "")))))
+(defpoll current-volume :interval "1s"  "wpctl get-volume @DEFAULT_SINK@ | awk '{print $2}' | sed 's/0.//g'")
+(defvar volume false)
+
+; Wireless status
+(defwidget wireless []
+    (box    :orientation "v"
+            :class "container"
+	    (box    :orientation "v"
+                :class "wireless"
+                :space-evenly "false"
+	    (button :onclick "echo yaa"
+                :class "button-wireless" wireless-icon))))
+(defpoll wireless-icon :interval "1s" "$HOME/.config/eww/scripts/wireless icon")
+    
+; Battery status
+(defwidget battery []
+    (box    :orientation "v"
+            :class "container"
+        (box    :orientation "v"
+                :class "battery"
+                :space-evenly "false"
+        (button :onclick "echo yaaa"
+                :class "button-battery" battery-icon))))
+(defpoll battery-icon :interval "1s" "$HOME/.config/eww/scripts/battery icon")
+    
+; Clock
+(defwidget clock []
+    (box    :orientation "v"
+            :class "clock"
+    (button :onclick "$HOME/.config/eww/scripts/popup calendar"
+            :class "clock-hour" hour)
+    (button :onclick "$HOME/.config/eww/scripts/popup calendar"
+            :class "clock-min" min)))
+(defpoll hour	:interval "1s" "date '+%H'")
+(defpoll min	:interval "1s" "date '+%M'")
+
+; Calendar
+(defwidget cal []
+    (box    :orientation "v"
+            :class "cal-box"
+        (box    :class "cal-inner-box"
+        (calendar   :class "cal"
+                    :day calendar_day
+                    :year calendar_year))))
+(defpoll calendar_day   :interval "10h" "date '+%d'")
+(defpoll calendar_year  :interval "10h" "date '+%Y'")
+
+; Bar
+(defwidget bar []
+	(box    :class "eww_bar" 
+		    :orientation "v" 
+		    :vexpand "false" 
+		    :hexpand "false"
+(top)
+(bottom)))
+(defwidget top []       ; top modules
+    (box    :orientation "v"
+            :space-evenly "false"
+            :valign "start"
+(launcher)(screencap)))
+(defwidget bottom []    ; bottom modules
+    (box    :orientation "v"
+            :space-evenly "false"
+            :valign "end"
+(workspace)(brightness)(volume)(wireless)(battery)(clock)))

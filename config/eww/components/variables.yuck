@@ -1,0 +1,3 @@
+(defvar eww "eww -c $HOME/.config/eww/")
+(defvar launcher "$HOME/.config/eww/scripts/launcher")
+(defvar battery "$HOME/.config/eww/scripts/battery")

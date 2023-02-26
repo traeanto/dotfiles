@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+arg="$(echo "$@" | awk '{print $1;}')"
+pat="$(echo "$@" | awk '{print $2;}')"
+if [ -z "$arg" ]; then
+    emacs .
+    :
+elif [ "$arg" == "my" ]; then
+    nano $pat
+else
+    emacs $@
+fi

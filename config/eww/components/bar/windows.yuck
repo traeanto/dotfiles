@@ -1,0 +1,29 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Window Sections
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Bar    
+(defwindow bar
+    :exclusive true
+    :monitor 0
+    :windowtype "dock"
+    :stacking "fg"
+	:geometry   (geometry   :x "0" 
+						    :y "0" 
+						    :height "100%" 
+						    :width "47"
+                            :anchor "left center")
+	:reserve (struts        :distance "35px" 
+                            :side "left")
+	:wm-ignore false
+	:hexpand "false"
+(bar))
+
+; Calendar
+(defwindow calendar
+    :monitor 0
+    :geometry   (geometry   :x "5px"
+                            :y "70%"
+                            :width "270px"
+                            :hight "60px" )
+(cal))

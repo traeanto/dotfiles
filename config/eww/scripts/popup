@@ -1,0 +1,22 @@
+#!/usr/bin/bash
+
+calendar() {
+    LOCK_FILE="$HOME/.cache/eww-calendar.lock"
+
+    run() {
+        eww open calendar
+    }
+
+    # Open widgets
+    if [[ ! -f "$LOCK_FILE" ]]; then
+        touch "$LOCK_FILE"
+        run
+    else
+        eww close calendar
+        rm "$LOCK_FILE"
+    fi
+}
+
+if [ "$1" = "calendar" ]; then
+    calendar
+fi

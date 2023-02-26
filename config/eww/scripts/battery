@@ -1,0 +1,43 @@
+#!/bin/bash
+
+PERCEN="$(cat /sys/class/power_supply/BAT*/capacity)"
+STATUS="$(cat /sys/class/power_supply/BAT*/status)"
+
+icon() {
+    [[ $STATUS == Charging ]] && echo "" && exit
+    if [ "$PERCEN" -gt "90" ]; then
+	    icon=""
+    elif [ "$PERCEN" -gt "80" ]; then
+	    icon=""
+    elif [ "$PERCEN" -gt "70" ]; then
+	    icon=""
+    elif [ "$PERCEN" -gt "60" ]; then
+	    icon=""
+    elif [ "$PERCEN" -gt "50" ]; then
+	    icon=""
+    elif [ "$PERCEN" -gt "40" ]; then
+	    icon=""
+    elif [ "$PERCEN" -gt "30" ]; then
+	    icon=""
+    elif [ "$PERCEN" -gt "20" ]; then
+	    icon=""
+    elif [ "$PERCEN" -gt "10" ]; then
+	    icon=""
+	    notify-send -u critical "Battery Low" "Connect Charger"
+    elif [ "$PERCEN" -gt "0" ]; then
+	    icon=""
+	    notify-send -u critical "Battery Low" "Connect Charger"
+    else
+        echo  && exit
+    fi
+    echo "$icon"
+}
+
+percent() {
+    echo $PERCEN
+}
+
+[ "$1" = "icon" ] && icon && exit
+[ "$1" = "percent" ] && percent && exit
+
+exit

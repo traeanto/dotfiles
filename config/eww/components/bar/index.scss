@@ -1,0 +1,175 @@
+// Variable Color's
+$blue: #8aadf4;
+$maroon: #f0c6c6;
+
+// Global
+*{
+  all: unset;
+}
+
+// Eww Bar
+.eww_bar{
+    font-family: "JetBrainsMono Nerd Font";
+    background-color: #dce0e8;
+    //padding: 6px 6px 10px;
+    padding-bottom: 10px;
+}
+
+scale trough {
+    all: unset;
+    background-color: #dce0e8;
+    border-radius: 5px;
+    min-height: 80px;
+    min-width: 7px;
+    margin: .3rem 0 .3rem 0;
+}
+
+// Launcher
+.launcher{
+    background-color: #eff1f5;
+}
+.button-launcher {
+    font-size: 25px;
+    color: #7dc4e4;
+    padding: 5px;
+}
+//.button-launcher{
+//    font-size: 30px;
+//    padding: 5px;
+//    background-color: #91d7e3;
+//    border-radius: 0 0 25px 0;
+//}
+
+// Screencap
+.screencap{
+    background-color: #eff1f5;
+}
+.button-screencap{
+    font-family: "Material Icons Round";
+    font-size: 25px;
+    color: #a6da95;
+    padding: 5px;
+}
+
+.container{
+    padding: 0 8px;
+}
+
+// Workspace
+.container-workspace {
+    margin-bottom: 10px;
+}
+.workspace{
+    font-size: 13px;
+}
+.0{
+    color: #a6adc8;
+}
+.01,.02,.03,.04{
+    color: #7dc4e4;
+}
+.011,.022,.033,.044{
+    color: #ed8796;
+}
+
+// Brightness
+.brightness{
+    background-color: #eff1f5;
+    border-radius: 25px 25px 0 0;
+    padding-top: 8px;
+}
+.button-brightness{
+    color: #ef9f76;
+    font-size: 21px;
+}
+.bar-brightness trough highlight {
+    background-color: #e5c890;
+    border-radius: 5px;
+}
+
+// Volume
+.volume{
+    background-color: #eff1f5;
+}
+.button-volume{
+    color: #8caaee;
+    font-size: 21px;
+}
+.bar-volume trough highlight {
+  background-color: #99d1db;
+  border-radius: 5px;
+}
+
+// Wireless
+.wireless{
+    background-color: #eff1f5;
+}
+.button-wireless{
+    font-family: JetBrainsMono Nerd Font;
+    font-size: 19px;
+    color: #c6a0f6;
+    margin-top: -3px;
+    margin-left: -7px;
+}
+
+// Battery
+.battery{
+    background-color: #eff1f5;
+    border-radius: 0 0 25px 25px;
+}
+.button-battery{
+    font-family: JetBrainsMono Nerd Font;
+    font-size: 20px;
+    color: #a6da95;
+    padding-bottom: 5px;
+    margin-top: -6px;
+}
+
+// Clock
+.clock{
+    font-family: "Iosevka";
+    font-weight: bold;
+    font-size: 22px;
+    color: #179299;
+    padding: 10px;
+}
+
+// Calendar
+.cal-box {
+    font-family: "JetBrainsMono Nerd Font";
+    background-color: #8bd5ca;
+    font-weight: bold;
+    border-radius: 10px;
+
+  .cal-inner-box {
+      padding: 10px 10px 5px 10px;
+
+      .cal {
+          &.highlight {
+              padding: 5px;
+          }
+          padding: 2px;
+          margin-left: 10px;
+      }
+  }
+}
+calendar {
+    color: #eff1f5;
+}
+calendar:selected {
+    color: #8bd5ca;
+    background-color: #eff1f5;
+    border-radius: 5px;
+}
+calendar.header {
+    font-weight: bold;
+}
+calendar.button {
+    font-weight: bold;
+}
+calendar.highlight {
+    font-weight: bold;
+}
+calendar:indeterminate {
+    color: #a5adcb;
+}

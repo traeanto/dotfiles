@@ -1,0 +1,5 @@
+(include "components/variables.yuck")
+
+; Bar
+(include "components/bar/widgets.yuck")
+(include "components/bar/windows.yuck")
