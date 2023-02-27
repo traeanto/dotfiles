@@ -9,4 +9,4 @@ pipewire &
 pipewire-pulse &
 wireplumber &
 $HOME/.config/hypr/components/import-gsettings &
-hyprctl setcursor "Paper" 20 &
+hyprctl setcursor "Bibata-Paper" 20 &
