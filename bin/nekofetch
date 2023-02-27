@@ -1,0 +1,89 @@
+#!/usr/bin/bash
+
+cr="\033[0m"
+c0="\033[0;30m"
+c1="\033[0;31m"
+c2="\033[0;32m"
+c3="\033[0;33m"
+c4="\033[0;34m"
+c5="\033[0;35m"
+c6="\033[0;36m"
+c7="\033[0;37m"
+cb0="\033[1;30m"
+cb1="\033[1;31m"
+cb2="\033[1;32m"
+cb3="\033[1;33m"
+cb4="\033[1;34m"
+cb5="\033[1;35m"
+cb6="\033[1;36m"
+cb7="\033[1;37m"
+b0="\033[40m"
+b1="\033[41m"
+b2="\033[42m"
+b3="\033[43m"
+b4="\033[44m"
+b5="\033[45m"
+b6="\033[46m"
+b7="\033[47m"
+
+
+getusername() {
+    username="$(whoami)"
+    echo $username
+}
+
+gethostname() {
+    hostname="$(hostname)"
+    echo $hostname
+}
+
+getseparator() {
+    _USERNAME="$(getusername)"
+    _HOSTNAME="$(gethostname)"
+    let _COUNT="2 + ${#_USERNAME} + ${#_HOSTNAME}"
+    for ((i=1; i<="$_COUNT"; i++))
+    do
+        echo -n "━"
+    done
+}
+
+getdistro() {
+    distro="$(uname -o) $(uname -r)"
+    echo $distro
+}
+
+getsession() {
+    echo $XDG_BACKEND
+}
+
+getshell() {
+    shell="$(basename $SHELL)"
+    echo $shell
+}
+
+getmemory() {
+    _MEM="$(free -m | grep 'Mem')"
+    _TOTAL="$(echo ${_MEM} | awk '{print $2}')"
+    _USED="$(echo ${_MEM} | awk '{print $3}')"
+    _PERCEN="$((_USED*100/_TOTAL))"
+
+    memory="${_USED}MB / ${_TOTAL}MB (${_PERCEN}%)"
+    echo $memory
+}
+
+getuptime() {
+    uptime="$(uptime -p | sed 's/up //')"
+    echo $uptime
+}
+
+echo -e ""
+echo -e "${c0}       ▄${b7}▀${cr}${c0}▄     ▄${b7}▀${cr}▄          ${cb2}$(getusername)${cr}😺${cb2}$(gethostname)"
+echo -e "${c0}      ▄█${b5} ${b7} █▀█▀█ ${b5} ${cr}█▄         ${c4}$(getseparator)"
+echo -e "${c0}  ▄▄  █${b7}           ${c0}█  ▄▄     ${c1} ${cr}$(getdistro)"
+echo -e "${c0} █${b7}▄▄█${cr} █${b7}  ▀  ${c1}${b7}┳${c0}${b7}  ▀  ${cr}█ █${b7}▄▄${cr}█    ${c5}${cr} $(getsession)"
+echo -e "${c3}▛▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▜   ${c3}${cr} $(getshell)"
+echo -e "${c3}▌        Hi there       ▐   ${c4}${cr} $(getmemory)"
+echo -e "${c3}▌    Have a nice day!   ▐   ${c2}${cr} $(getuptime)"
+echo -e "${c3}▙▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▟   "
+echo -e "${c0}           █${b7} █${cr}▄${b7}▀${cr}▄           ${c1}████${c2}████${c3}████${c4}████${c5}████${c6}████"
+echo -e "${c0}           ▀${b7}▄▄▄▄${cr}▀           ${c0}▀▀▀▀▀▀▀▀▀▀▀▀${c7}▀▀▀▀▀▀▀▀▀▀▀▀"
