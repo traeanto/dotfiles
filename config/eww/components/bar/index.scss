@@ -3,15 +3,14 @@ $blue: #8aadf4;
 $maroon: #f0c6c6;
 
 // Global
-*{
+* {
   all: unset;
 }
 
 // Eww Bar
-.eww_bar{
+.eww_bar {
     font-family: "JetBrainsMono Nerd Font";
     background-color: #dce0e8;
-    //padding: 6px 6px 10px;
     padding-bottom: 10px;
 }
 
@@ -24,34 +23,56 @@ scale trough {
     margin: .3rem 0 .3rem 0;
 }
 
-// Launcher
-.launcher{
+// Dashboard
+.dashboard {
     background-color: #eff1f5;
+}
+.button-dashboard {
+    font-size: 30px;
+    padding: 5px;
+    background-color: #91d7e3;
+    border-radius: 0 0 20px 0;
+}
+
+// Launcher
+.container-apps {
+    background-color: #91d7e3;
+    border-radius: 0 0 10px 10px;
+}
+.launcher {
+    background-color: #eff1f5;
+    border-radius: 10px 0 0 0;
 }
 .button-launcher {
     font-size: 25px;
     color: #7dc4e4;
     padding: 5px;
 }
-//.button-launcher{
-//    font-size: 30px;
-//    padding: 5px;
-//    background-color: #91d7e3;
-//    border-radius: 0 0 25px 0;
-//}
 
-// Screencap
-.screencap{
+// Music
+.music {
     background-color: #eff1f5;
 }
-.button-screencap{
+.button-music {
+    font-family: "Material Icons Round";
+    font-size: 25px;
+    color: #c6a0f6;
+    padding: 5px;
+}
+
+// Screencap
+.screencap {
+    background-color: #eff1f5;
+    border-radius: 0 0 10px 10px;
+}
+.button-screencap {
     font-family: "Material Icons Round";
     font-size: 25px;
     color: #a6da95;
     padding: 5px;
 }
 
-.container{
+.container {
     padding: 0 8px;
 }
 
@@ -59,26 +80,27 @@ scale trough {
 .container-workspace {
     margin-bottom: 10px;
 }
-.workspace{
+.workspace {
     font-size: 13px;
+    margin-left: -2px;
 }
-.0{
-    color: #a6adc8;
+.0 {
+    color: #bcc0cc;
 }
-.01,.02,.03,.04{
+.01,.02,.03,.4,.5,.6,.7,.8,.9,.10 {
     color: #7dc4e4;
 }
-.011,.022,.033,.044{
+.011,.022,.033,.44,.55,.66,.77,.88,.99,.1010 {
     color: #ed8796;
 }
 
 // Brightness
-.brightness{
+.brightness {
     background-color: #eff1f5;
     border-radius: 25px 25px 0 0;
     padding-top: 8px;
 }
-.button-brightness{
+.button-brightness {
     color: #ef9f76;
     font-size: 21px;
 }
@@ -88,10 +110,10 @@ scale trough {
 }
 
 // Volume
-.volume{
+.volume {
     background-color: #eff1f5;
 }
-.button-volume{
+.button-volume {
     color: #8caaee;
     font-size: 21px;
 }
@@ -101,10 +123,10 @@ scale trough {
 }
 
 // Wireless
-.wireless{
+.wireless {
     background-color: #eff1f5;
 }
-.button-wireless{
+.button-wireless {
     font-family: JetBrainsMono Nerd Font;
     font-size: 19px;
     color: #c6a0f6;
@@ -113,11 +135,11 @@ scale trough {
 }
 
 // Battery
-.battery{
+.battery {
     background-color: #eff1f5;
     border-radius: 0 0 25px 25px;
 }
-.button-battery{
+.button-battery {
     font-family: JetBrainsMono Nerd Font;
     font-size: 20px;
     color: #a6da95;
@@ -126,7 +148,7 @@ scale trough {
 }
 
 // Clock
-.clock{
+.clock {
     font-family: "Iosevka";
     font-weight: bold;
     font-size: 22px;

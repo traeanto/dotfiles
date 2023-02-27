@@ -1,7 +1,17 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Widget Sections
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-    
+
+; Dashboard
+(defwidget dashboard []
+    (box    :orientation "v"
+            :class "dashboard"
+            :space-evenly "false"
+    (eventbox   :cursor "pointer"
+        (button :class "button-dashboard"
+                :onclick "${launcher}" "🌸"))))
+
+        
 ; Launcher
 (defwidget launcher []
     (box    :orientation "v"
@@ -9,8 +19,19 @@
         (box    :orientation "v"
                 :class "launcher"
                 :space-evenly "false"
-        (button :class "button-launcher"
-                :onclick "${launcher}" "󰑣"))))
+        (eventbox   :cursor "pointer"
+            (button :class "button-launcher"
+                    :onclick "${launcher}" "󰑣")))))
+; Music
+(defwidget music []
+    (box    :orientation "v"
+            :class "container-apps"
+        (box    :orientation "v"
+                :class "music"
+                :space-evenly "false"
+        (eventbox   :cursor "pointer"
+            (button :class "button-music"
+                    :onclick "${launcher}" "")))))
     
 ; Screencap
 (defwidget screencap []
@@ -19,8 +40,9 @@
         (box    :orientation "v"
                 :class "screencap"
                 :space-evenly "false"
-        (button :class "button-screencap"
-                :onclick "echo ha" ""))))
+        (eventbox   :cursor "pointer"
+            (button :class "button-screencap"
+                    :onclick "echo ha" "")))))
 
 ; Workspace
 (defwidget workspace []
@@ -133,7 +155,7 @@
     (box    :orientation "v"
             :space-evenly "false"
             :valign "start"
-(launcher)(screencap)))
+(dashboard)(launcher)(music)(screencap)))
 (defwidget bottom []    ; bottom modules
     (box    :orientation "v"
             :space-evenly "false"
