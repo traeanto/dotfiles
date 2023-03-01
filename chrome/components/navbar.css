@@ -1,0 +1,35 @@
+/* General */
+#nav-bar {
+    padding-block-start: 0px !important;
+    border:     none !important;
+    box-shadow: none !important;
+    background: #dce0e8 !important;
+}
+
+#navigator-toolbox { border: none !important; }
+
+#urlbar-container {
+  margin: 0 !important;
+}
+
+#urlbar-input-container {
+  background-color: #dce0e8 !important;
+  border: none !important;
+}
+
+#urlbar-background { border: transparent !important; }
+
+#urlbar[focused='true'] > #urlbar-background,
+#urlbar:not([open]) > #urlbar-background {
+    box-shadow: none !important;
+    background: #dce0e8 !important;
+}
+
+/* Hide urlbar view */
+.urlbarView { display: none !important; }
+
+/* Hide	navigation button */
+#back-button, #forward-button { display: none !important; }
+
+/* Fullscreen toggle */
+#fullscr-toggler { display:none!important; }
