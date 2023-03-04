@@ -1,0 +1,32 @@
+#!/usr/bin/bash
+
+case "${1}" in
+    mute) wpctl set-mute @DEFAULT_SINK@ toggle
+    ;;
+    raise) wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+    ;;
+    lower) wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+    ;;
+esac
+
+notification() {
+
+    MUTED="$(pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $NF}')"
+    VOLUME="$(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | sed 's/%//g')"
+    
+    if [ $MUTED == "yes" ]; then
+        MUTE='Muted'
+        ICON="notification-audio-volume-muted"
+    elif [ $VOLUME -lt 30 ]; then
+        ICON="notification-audio-volume-low"
+    elif [ $VOLUME -lt 70 ]; then
+	    ICON="notification-audio-volume-medium"
+    else
+	    ICON="notification-audio-volume-high"
+    fi
+
+    exec notify-send ${MUTE:-"$VOLUME" -h "int:value:$VOLUME"} -h string:synchronous:audio-volume -i $ICON -t 1000
+    
+}
+
+notification
