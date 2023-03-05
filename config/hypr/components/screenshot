@@ -1,0 +1,50 @@
+#!/usr/bin/bash
+
+TIMESTAMP="$(date +%Y-%m-%d-%T)"
+DIR="${HOME}/Pictures/Screenshots"
+FILENAME="${DIR}/${TIMESTAMP}-screenshot.png"
+FRAME_COLOR="#939ab7"
+
+# Directory check
+[ -d "$DIR" ] || mkdir -p "$DIR"
+
+notify() {
+	notify-send "Picture obtained!" -h string:synchronous:screenshot -i $FILENAME -u low
+}
+
+shotfull() {
+	grim "$FILENAME"
+	notify
+}
+
+shotselection() {
+	rm -f /tmp/grim_shot.png
+	notify-send "Select region" && \
+		grim -g "$(slurp -w 0)" /tmp/grim_shot.png || \
+			notify-send 'Screenshot canceled!'
+
+	convert /tmp/grim_shot.png \
+		\( +clone -alpha extract -draw 'fill black polygon 0,0 0,10 10,0 fill white circle 10,10 10,0' \
+		\( +clone -flip \) -compose Multiply -composite \
+		\( +clone -flop \) -compose Multiply -composite \
+		\) -alpha off -compose CopyOpacity -composite -quality 100% \
+		miff:- | \
+    convert - \
+        \( +clone -background black -shadow 70x10+0+0 \
+        \) +swap -background none -layers merge +repage -quality 100% \
+		miff:- | \
+	convert - \
+		-bordercolor "$FRAME_COLOR" \
+		-border 15 \
+		-quality 100% \
+	"$FILENAME" | wl-copy
+
+	[ ! -f "$FILENAME" ] || notify
+}
+
+case "${1}" in
+    full) shotfull
+    ;;
+    selc) shotselection
+    ;;
+esac
