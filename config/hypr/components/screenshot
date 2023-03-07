@@ -19,27 +19,28 @@ shotfull() {
 
 shotselection() {
 	rm -f /tmp/grim_shot.png
-	notify-send "Select region" && \
+	notify-send "Select region" -h string:synchronous:screenshot -u low -t 1000 && \
 		grim -g "$(slurp -w 0)" /tmp/grim_shot.png || \
-			notify-send 'Screenshot canceled!'
+			notify-send 'Screenshot canceled!' -h string:synchronous:screenshot -u low
+	if [ -f "/tmp/grim_shot.png" ]; then
+		convert /tmp/grim_shot.png \
+			\( +clone -alpha extract -draw 'fill black polygon 0,0 0,10 10,0 fill white circle 10,10 10,0' \
+			\( +clone -flip \) -compose Multiply -composite \
+			\( +clone -flop \) -compose Multiply -composite \
+			\) -alpha off -compose CopyOpacity -composite -quality 100% \
+			miff:- | \
+		convert - \
+            \( +clone -background black -shadow 70x10+0+0 \
+            \) +swap -background none -layers merge +repage -quality 100% \
+			miff:- | \
+	    convert - \
+		    -bordercolor "$FRAME_COLOR" \
+			-border 15 \
+			-quality 100% \
+		"$FILENAME" | wl-copy
+	fi
 
-	convert /tmp/grim_shot.png \
-		\( +clone -alpha extract -draw 'fill black polygon 0,0 0,10 10,0 fill white circle 10,10 10,0' \
-		\( +clone -flip \) -compose Multiply -composite \
-		\( +clone -flop \) -compose Multiply -composite \
-		\) -alpha off -compose CopyOpacity -composite -quality 100% \
-		miff:- | \
-    convert - \
-        \( +clone -background black -shadow 70x10+0+0 \
-        \) +swap -background none -layers merge +repage -quality 100% \
-		miff:- | \
-	convert - \
-		-bordercolor "$FRAME_COLOR" \
-		-border 15 \
-		-quality 100% \
-	"$FILENAME" | wl-copy
-
-	[ ! -f "$FILENAME" ] || notify
+	[ -f "$FILENAME" ] && notify
 }
 
 case "${1}" in
