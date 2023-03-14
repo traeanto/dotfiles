@@ -9,7 +9,7 @@
             :space-evenly "false"
     (eventbox   :cursor "pointer"
         (button :class "button-dashboard"
-                :onclick "${launcher}" "🌸"))))
+                :onclick "echo hi" "🌸"))))
 
         
 ; Launcher
@@ -31,7 +31,7 @@
                 :space-evenly "false"
         (eventbox   :cursor "pointer"
             (button :class "button-music"
-                    :onclick "${launcher}" "")))))
+                    :onclick "edho ba" "")))))
     
 ; Screencap
 (defwidget screencap []
@@ -67,7 +67,7 @@
                     :value current-brightness
                     :orientation "v"
                     :flipped true
-                    :max 100
+                    :max 101
                     :min 0
                     :onchange "brightnessctl set {}%"))
 	        (button :onclick "echo hi"
@@ -91,12 +91,12 @@
                     :value current-volume
                     :orientation "v"
                     :flipped true
-                    :max 100
+                    :max 101
                     :min 0
                     :onchange "wpctl set-volume @DEFAULT_SINK@ {}%"))
             (button :onclick "echo hi"
                     :class "button-volume" "")))))
-(defpoll current-volume :interval "1s"  "wpctl get-volume @DEFAULT_SINK@ | awk '{print $2}' | sed 's/0.//g'")
+(defpoll current-volume :interval "1s"  "pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | sed 's/%//g'")
 (defvar volume false)
 
 ; Wireless status

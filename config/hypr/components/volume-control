@@ -9,24 +9,24 @@ case "${1}" in
     ;;
 esac
 
-notification() {
+notify() {
 
     MUTED="$(pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $NF}')"
     VOLUME="$(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | sed 's/%//g')"
     
-    if [ $MUTED == "yes" ]; then
-        MUTE='Muted'
-        ICON="notification-audio-volume-muted"
-    elif [ $VOLUME -lt 30 ]; then
-        ICON="notification-audio-volume-low"
-    elif [ $VOLUME -lt 70 ]; then
-	    ICON="notification-audio-volume-medium"
+    if [ "$MUTED" == "yes" ]; then
+        MUTE="Muted"
+        ICON="$HOME/.local/share/icons/status/volum_mut.svg"
+    elif [ "$VOLUME" -lt 20 ]; then
+        ICON="$HOME/.local/share/icons/status/volum_low.svg"
+    elif [ "$VOLUME" -lt 60 ]; then
+	    ICON="$HOME/.local/share/icons/status/volum_mid.svg"
     else
-	    ICON="notification-audio-volume-high"
+	    ICON="$HOME/.local/share/icons/status/volum_ful.svg"
     fi
 
-    exec notify-send ${MUTE:-"$VOLUME" -h "int:value:$VOLUME"} -h string:synchronous:audio-volume -i $ICON -t 1000
+    exec notify-send ${MUTE:-"Volume $VOLUME" -h "int:value:$VOLUME"} -h string:synchronous:audio-volume -i $ICON -u low -t 1000
     
 }
 
-notification
+notify

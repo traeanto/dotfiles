@@ -1,12 +1,11 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 eww open bar &
 dunst &
-swww init && swww img ~/Pictures/tokyo.gif &
+swww init && swww img ~/Pictures/fuji.png
 mpd &
 /usr/lib/lxpolkit/lxpolkit &
 pipewire &
 pipewire-pulse &
 wireplumber &
-$HOME/.config/hypr/components/import-gsettings &
-hyprctl setcursor "Bibata-Paper" 20 &
+nwg-look -a &

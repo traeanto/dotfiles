@@ -3,6 +3,8 @@
 TIMESTAMP="$(date +%Y-%m-%d-%T)"
 DIR="${HOME}/Pictures/Screenshots"
 FILENAME="${DIR}/${TIMESTAMP}-screenshot.png"
+ICON_SELECT="${HOME}/.local/share/icons/status/screen_reg.svg"
+
 FRAME_COLOR="#939ab7"
 
 # Directory check
@@ -19,7 +21,7 @@ shotfull() {
 
 shotselection() {
 	rm -f /tmp/grim_shot.png
-	notify-send "Select region" -h string:synchronous:screenshot -u low -t 1000 && \
+	notify-send "Select region" -i $ICON_SELECT -h string:synchronous:screenshot -u low -t 1000 && \
 		grim -g "$(slurp -w 0)" /tmp/grim_shot.png || \
 			notify-send 'Screenshot canceled!' -h string:synchronous:screenshot -u low
 	if [ -f "/tmp/grim_shot.png" ]; then

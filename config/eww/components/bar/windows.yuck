@@ -17,21 +17,11 @@
 	:hexpand "false"
 (bar))
 
-; Screencap
-(defwindow pop-screencap
-    :monitor 0
-    :geometry   (geometry   :x "0"
-                            :y "20px"
-                            :height "50px"
-                            :width "250px"
-                            :anchor "top center")
-"h")
-
 ; Calendar
 (defwindow calendar
     :monitor 0
-    :geometry   (geometry   :x "5px"
-                            :y "5px"
+    :geometry   (geometry   :x "0"
+                            :y "10px"
                             :height "60px"
                             :width "270px"
                             :anchor "left bottom")

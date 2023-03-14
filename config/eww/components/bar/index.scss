@@ -1,47 +1,51 @@
 // Variable Color's
-$blue: #8aadf4;
-$maroon: #f0c6c6;
+$bg: #24273a;
+$bg2: #363a4f;
+$fg: #cad3f5;
 
 // Global
 * {
-  all: unset;
-}
-
-// Eww Bar
-.eww_bar {
-    font-family: "JetBrainsMono Nerd Font";
-    background-color: #dce0e8;
-    padding-bottom: 10px;
+    all: unset;
 }
 
 scale trough {
     all: unset;
-    background-color: #dce0e8;
+    background-color: #494d64;
     border-radius: 5px;
     min-height: 80px;
     min-width: 7px;
     margin: .3rem 0 .3rem 0;
 }
 
+// Eww Bar
+.eww_bar {
+    font-family: "JetBrainsMono Nerd Font";
+    background-color: $bg;
+    padding-bottom: 10px;
+    margin : 10px;
+    box-shadow: 0 0 5px 1px #181926;
+    border-radius: 10px;
+}
+
 // Dashboard
 .dashboard {
-    background-color: #eff1f5;
+    background-color: $bg2;
+    border-radius: 10px	10px 0 0;
 }
 .button-dashboard {
     font-size: 30px;
     padding: 5px;
-    background-color: #91d7e3;
-    border-radius: 0 0 20px 0;
+    background-color: #5b6078;
+    border-radius: 10px;
 }
 
 // Launcher
 .container-apps {
-    background-color: #91d7e3;
-    border-radius: 0 0 10px 10px;
+    background-color: #5b6078;
+    border-radius: 0 0 15px 15px;
 }
 .launcher {
-    background-color: #eff1f5;
-    border-radius: 10px 0 0 0;
+    background-color: $bg2;
 }
 .button-launcher {
     font-size: 25px;
@@ -51,7 +55,7 @@ scale trough {
 
 // Music
 .music {
-    background-color: #eff1f5;
+    background-color: $bg2;
 }
 .button-music {
     font-family: "Material Icons Round";
@@ -62,7 +66,7 @@ scale trough {
 
 // Screencap
 .screencap {
-    background-color: #eff1f5;
+    background-color: $bg2;
     border-radius: 0 0 10px 10px;
 }
 .button-screencap {
@@ -84,11 +88,12 @@ scale trough {
     font-size: 13px;
     margin-left: -2px;
 }
+
 .0 {
-    color: #bcc0cc;
+    color: #494d64;
 }
 .01,.02,.03,.4,.5,.6,.7,.8,.9,.10 {
-    color: #7dc4e4;
+    color: #8aadf4;
 }
 .011,.022,.033,.44,.55,.66,.77,.88,.99,.1010 {
     color: #ed8796;
@@ -96,7 +101,7 @@ scale trough {
 
 // Brightness
 .brightness {
-    background-color: #eff1f5;
+    background-color: $bg2;
     border-radius: 25px 25px 0 0;
     padding-top: 8px;
 }
@@ -111,7 +116,7 @@ scale trough {
 
 // Volume
 .volume {
-    background-color: #eff1f5;
+    background-color: $bg2;
 }
 .button-volume {
     color: #8caaee;
@@ -124,7 +129,7 @@ scale trough {
 
 // Wireless
 .wireless {
-    background-color: #eff1f5;
+    background-color: $bg2;
 }
 .button-wireless {
     font-family: JetBrainsMono Nerd Font;
@@ -136,7 +141,7 @@ scale trough {
 
 // Battery
 .battery {
-    background-color: #eff1f5;
+    background-color: $bg2;
     border-radius: 0 0 25px 25px;
 }
 .button-battery {
@@ -152,14 +157,14 @@ scale trough {
     font-family: "Iosevka";
     font-weight: bold;
     font-size: 22px;
-    color: #179299;
+    color: $fg;
     padding: 10px;
 }
 
 // Calendar
 .cal-box {
     font-family: "JetBrainsMono Nerd Font";
-    background-color: #8bd5ca;
+    background-color: $bg2;
     font-weight: bold;
     border-radius: 10px;
 
@@ -176,11 +181,11 @@ scale trough {
   }
 }
 calendar {
-    color: #eff1f5;
+    color: $fg;
 }
 calendar:selected {
-    color: #8bd5ca;
-    background-color: #eff1f5;
+    color: $bg;
+    background-color: $fg;
     border-radius: 5px;
 }
 calendar.header {
