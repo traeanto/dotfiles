@@ -1,1 +1,17 @@
+/* Hide status panel */
 #statuspanel { display: none !important; }
+
+/* Encryption and Permissions icons */
+#identity-permission-box { display: none !important; }
+
+/* Hide everything BUT the zoom indicator within the URL Bar */
+#page-action-buttons > :not(#urlbar-zoom-button) { display: none !important; }
+
+/* Hide the arrow in the URL Bar */
+#urlbar-go-button { display: none !important; }
+
+/* Remove window control buttons */
+.titlebar-buttonbox-container { display: none !important; }
+
+/* Hide open menu button */
+/*#PanelUI-menu-button {display: none;}

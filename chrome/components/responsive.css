@@ -1,0 +1,18 @@
+@media (min-width: 1000px) {
+    #navigator-toolbox { display: flex; flex-wrap: wrap; }
+    #nav-bar {
+        order: 2;
+		width: 35vw;
+	}
+	#titlebar {
+		order: 3;
+		width: calc(100vw - 35vw - 1px);
+	}
+	#PersonalToolbar {
+		order: 1;
+		width: 100%;
+	}
+	
+	#navigator-toolbox:focus-within #nav-bar { width: 35vw; }
+	#navigator-toolbox:focus-within #titlebar { width: calc(100vw - 35vw - 1px); }
+}
