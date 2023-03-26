@@ -1,0 +1,31 @@
+.eww_screencast {
+	background-color: $base;
+	border-radius: 10px;
+	margin: 10px;
+	box-shadow: 0 0 4px 1px $shadow2;
+	padding: 10px;
+}
+
+.label-indicator-n, .label-indicator-a {
+	font-size: 100px;
+	margin: -40px -20px;
+}
+.label-indicator-n {
+	color: $green;
+}
+.label-indicator-a {
+	color: $red;
+}
+
+.screencast-start, .screencast-stop {
+	font-size: 30px;
+	color: $text;
+	background-color: $base2;
+	border-radius: 10px;
+	padding:10px;
+	margin-top: 10px;
+}
+.screencast-start:hover, .screencast-stop:hover {
+	color: $base;
+	background-color: $blue;
+}

@@ -3,3 +3,23 @@
 ; Bar
 (include "components/bar/widgets.yuck")
 (include "components/bar/windows.yuck")
+
+; Calendar
+(include "components/calendar/widgets.yuck")
+(include "components/calendar/windows.yuck")
+
+; Clipboard
+(include "components/clipboard/widgets.yuck")
+(include "components/clipboard/windows.yuck")
+
+; Screencast
+(include "components/screencast/widgets.yuck")
+(include "components/screencast/windows.yuck")
+
+; Question
+(include "components/question/widgets.yuck")
+(include "components/question/windows.yuck")
+
+; Space
+(include "components/space/widgets.yuck")
+(include "components/space/windows.yuck")

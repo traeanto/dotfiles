@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 PERCEN="$(cat /sys/class/power_supply/BAT*/capacity)"
 STATUS="$(cat /sys/class/power_supply/BAT*/status)"
@@ -37,7 +37,9 @@ percent() {
     echo $PERCEN
 }
 
-[ "$1" = "icon" ] && icon && exit
-[ "$1" = "percent" ] && percent && exit
-
-exit
+case "$1" in
+	"icon") icon
+    ;;
+    "percent") percent
+    ;;
+esac

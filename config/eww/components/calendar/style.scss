@@ -1,0 +1,37 @@
+// Calendar
+.cal-box {
+	font-family: $font2;
+	background-color: $base;
+	border-radius: 10px;
+	margin: 10px;
+	box-shadow: 0 0 4px 1px $shadow2;
+}
+
+.cal-inner-box {
+	padding: 15px 10px 5px;
+}
+
+.cal {      
+	padding: 2px 3px;
+}
+
+calendar {
+    color: $text;
+}
+calendar:selected {
+    color: $base;
+    background-color: $text;
+    border-radius: 5px;
+}
+calendar.header {
+	color: $magenta;
+}
+calendar.button {
+	color: $blue;
+}
+calendar.highlight {
+	color: $blue;
+}
+calendar:indeterminate {
+    color: $text3;
+}

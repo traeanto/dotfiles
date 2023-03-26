@@ -9,7 +9,7 @@
             :space-evenly "false"
     (eventbox   :cursor "pointer"
         (button :class "button-dashboard"
-                :onclick "echo hi" "🌸"))))
+                :onclick "echo hi" ""))))
 
         
 ; Launcher
@@ -22,27 +22,40 @@
         (eventbox   :cursor "pointer"
             (button :class "button-launcher"
                     :onclick "${launcher}" "󰑣")))))
-; Music
-(defwidget music []
+
+; Clipboard
+(defwidget clip []
     (box    :orientation "v"
             :class "container-apps"
         (box    :orientation "v"
-                :class "music"
+                :class "clip"
                 :space-evenly "false"
         (eventbox   :cursor "pointer"
-            (button :class "button-music"
-                    :onclick "edho ba" "")))))
-    
-; Screencap
-(defwidget screencap []
+            (button :class "button-clip"
+                    :onclick "eww open --toggle clipboard"
+					:onrightclick "eww open clipboard-input" "")))))
+
+; Screencast
+(defwidget cast []
     (box    :orientation "v"
             :class "container-apps"
         (box    :orientation "v"
-                :class "screencap"
+                :class "cast"
                 :space-evenly "false"
         (eventbox   :cursor "pointer"
-            (button :class "button-screencap"
-                    :onclick "echo ha" "")))))
+            (button :class "button-cast"
+                    :onclick "eww open-many screencast-closer screencast" "")))))
+
+; Screencast
+(defwidget tswitch []
+    (box    :orientation "v"
+            :class "container-apps"
+        (box    :orientation "v"
+                :class "tswitch"
+                :space-evenly "false"
+        (eventbox   :cursor "pointer"
+            (button :class "button-tswitch"
+                    :onclick "eww open-many tswitch-question-closer tswitch-question" "")))))
 
 ; Workspace
 (defwidget workspace []
@@ -123,25 +136,15 @@
     
 ; Clock
 (defwidget clock []
-    (box    :orientation "v"
-            :class "clock"
-    (button :onclick "$HOME/.config/eww/scripts/popup calendar"
-            :class "clock-hour" hour)
-    (button :onclick "$HOME/.config/eww/scripts/popup calendar"
-            :class "clock-min" min)))
+    (eventbox	 :onclick "eww open --toggle calendar"
+	(box		 :orientation "v"
+				 :class "clock"
+				 (label		 :class "clock-hour"
+				 			 :text hour)
+				 (label		 :class "clock-min"
+				 			 :text min))))
 (defpoll hour	:interval "1s" "date '+%H'")
 (defpoll min	:interval "1s" "date '+%M'")
-
-; Calendar
-(defwidget cal []
-    (box    :orientation "v"
-            :class "cal-box"
-        (box    :class "cal-inner-box"
-        (calendar   :class "cal"
-                    :day calendar_day
-                    :year calendar_year))))
-(defpoll calendar_day   :interval "10h" "date '+%d'")
-(defpoll calendar_year  :interval "10h" "date '+%Y'")
 
 ; Bar
 (defwidget bar []
@@ -155,7 +158,7 @@
     (box    :orientation "v"
             :space-evenly "false"
             :valign "start"
-(dashboard)(launcher)(music)(screencap)))
+(dashboard)(launcher)(clip)(cast)(tswitch)))
 (defwidget bottom []    ; bottom modules
     (box    :orientation "v"
             :space-evenly "false"

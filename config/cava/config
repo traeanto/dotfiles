@@ -1,9 +1,0 @@
-[general]
-bar_width = 1
-bar_spacing = 1
-
-[color]
-gradient = 1
-gradient_count = 2
-gradient_color_1 = '#c6a0f6'
-gradient_color_2 = '#f0c6c6'

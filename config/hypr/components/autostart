@@ -2,9 +2,9 @@
 
 eww open bar &
 dunst &
-swww init && swww img ~/Pictures/fuji.png
+wallpp &
 mpd &
-/usr/lib/lxpolkit/lxpolkit &
+lxpolkit &
 pipewire &
 pipewire-pulse &
 wireplumber &

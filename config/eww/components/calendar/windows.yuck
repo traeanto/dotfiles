@@ -1,0 +1,9 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Window Sections
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Calendar
+(defwindow calendar
+	:monitor 0
+	:geometry	(geometry	:anchor "left bottom")
+(cal))

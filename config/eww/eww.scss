@@ -1,2 +1,12 @@
+// Themes
+@import "themes/kuroneko.scss";
 // Bar
-@import "components/bar/index.scss";
+@import "components/bar/style.scss";
+// Calendar
+@import "components/calendar/style.scss";
+// Clipboard
+@import "components/clipboard/style.scss";
+// Screencast
+@import "components/screencast/style.scss";
+// Question
+@import "components/question/style.scss";

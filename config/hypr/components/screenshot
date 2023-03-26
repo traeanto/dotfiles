@@ -11,7 +11,8 @@ FRAME_COLOR="#939ab7"
 [ -d "$DIR" ] || mkdir -p "$DIR"
 
 notify() {
-	notify-send "Picture obtained!" -h string:synchronous:screenshot -i $FILENAME -u low
+	ICON="$HOME/.local/share/icons/status/screen_obt.svg"
+	notify-send "Picture obtained!" -i $ICON -h string:synchronous:screenshot -u low
 }
 
 shotfull() {
@@ -20,10 +21,11 @@ shotfull() {
 }
 
 shotselection() {
+	ICON="$HOME/.local/share/icons/status/screen_cld.svg"
 	rm -f /tmp/grim_shot.png
 	notify-send "Select region" -i $ICON_SELECT -h string:synchronous:screenshot -u low -t 1000 && \
-		grim -g "$(slurp -w 0)" /tmp/grim_shot.png || \
-			notify-send 'Screenshot canceled!' -h string:synchronous:screenshot -u low
+		grim -g "$(slurp -w 0)" /tmp/grim_shot.png && notify || \
+			notify-send 'Screenshot canceled!' -i $ICON -h string:synchronous:screenshot -u low
 	if [ -f "/tmp/grim_shot.png" ]; then
 		convert /tmp/grim_shot.png \
 			\( +clone -alpha extract -draw 'fill black polygon 0,0 0,10 10,0 fill white circle 10,10 10,0' \
@@ -41,8 +43,6 @@ shotselection() {
 			-quality 100% \
 		"$FILENAME" | wl-copy
 	fi
-
-	[ -f "$FILENAME" ] && notify
 }
 
 case "${1}" in

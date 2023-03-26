@@ -4,7 +4,10 @@
     --tab-block-margin: 0 !important;
 }
 
-#tabbrowser-tabs { background-color: #24273a !important }
+#tabbrowser-tabs {
+	color: var(--color-text) !important;
+	background-color: var(--color-base) !important;
+}
 
 /* Tabs colors  */
 #tabbrowser-tabs
@@ -17,15 +20,19 @@
   > .tabbrowser-tab
   > .tab-stack
   > .tab-background[selected='true'] {
-	margin: 10px 0 10px 0 !important;
-	border-radius: 7px !important; */
+	margin: 10px 0 !important;
+	border-radius: 10px !important;
     background-image: none !important;
-    background-color: #363a4f !important;
+	background-color: var(--color-blue) !important;
+}
+
+.tabbrowser-tab[selected='true'] {
+	color: var(--color-base) !important;
 }
 
 .tabbrowser-tab:hover .tab-background {
-	margin: 10px 0px 10px 0px !important;
-	border-radius: 7px !important;
+	margin: 10px 0 !important;
+	border-radius: 10px !important;
 }
 
 .tab-close-button {
@@ -39,6 +46,12 @@
 
 .tab-content[pinned] {
 	margin: 0 !important;
+}
+
+.tabbrowser-tab .close-icon:hover {
+	fill: var(--color-base) !important;
+	background-color: var(--color-red) !important;
+	border-radius: 4px;
 }
 
 /* Hides the list-all-tabs button*/
@@ -57,5 +70,5 @@
 
 /* The Firefox brand icon seen on newtab page etc. */
 .tab-icon-image[src="chrome://branding/content/icon32.png"]{
-    content: url("../icons/rocket.png"); /* filename for icon to load */
+	content: url("../icons/rocket.png"); /* filename for icon to load */
 }

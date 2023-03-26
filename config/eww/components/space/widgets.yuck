@@ -1,0 +1,8 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Widget Sections
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Closer
+(defwidget closer [window]
+	(eventbox	  :cursor "default"
+				  :onclick "eww close ${window} && eww close ${window}-closer"))

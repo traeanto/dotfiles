@@ -1,0 +1,58 @@
+#!/usr/bin/bash
+
+TIMESTAMP="$(date +%Y-%m-%d-%T)"
+DIR="${HOME}/Videos/Screencast"
+FILENAME="${DIR}/${TIMESTAMP}-screencast.mkv"
+STAT="$(pgrep 'wf-recorder')"
+
+indicator() {
+	if [ -z ${STAT} ];then
+        ICON="󰑊"
+	    CLASS="label-indicator-n"
+	else
+        ICON="󰑋"
+		CLASS="label-indicator-a"
+	fi
+    echo "(label :class \"$CLASS\" :text \"$ICON\")"
+}
+
+start () {
+	eww close screencast && eww close screencast-closer
+	[[ -d "$DIR" ]] || mkdir -p "$DIR"
+	if [ ! -z ${STAT} ]; then
+		notify-send "Recording have been started" \
+					-h string:synchronous:screen-record	
+    else
+	    for sec in $(seq 5 -1 1); do
+			if [ "$sec" == 1 ]; then
+				notify-send "Recording start" \
+							-h string:synchronous:screen-record
+				break
+			fi
+			notify-send "Recording in : $sec" \
+						-h string:synchronous:screen-record \
+						-u low
+			sleep 1
+		done
+		wf-recorder -a -f "$FILENAME"
+		eww close screencast && eww close screencast-closer
+	fi
+}
+
+stop() {
+	eww close screencast && eww close screencast-closer
+	pkill -2 wf-recorder && \
+	    notify-send "Record Stop" \
+					-h string:synchronous:screen-record || \
+			notify-send "Exit with do nothing" \
+						-h string:synchronous:screen-record
+}
+
+case "$1" in
+	"indicator") indicator
+	;;
+	"start") start
+	;;
+	"stop") stop
+	;;
+esac

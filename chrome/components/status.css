@@ -14,4 +14,4 @@
 .titlebar-buttonbox-container { display: none !important; }
 
 /* Hide open menu button */
-/*#PanelUI-menu-button {display: none;}
+#PanelUI-menu-button {display: none;}

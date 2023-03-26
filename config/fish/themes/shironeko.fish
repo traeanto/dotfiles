@@ -1,0 +1,6 @@
+set base "#dce0e8"
+set text "#4c4f69"
+set red "#ed8796"
+set blue "#8aadf4"
+set green "#a6da95"
+set magenta "#c6a0f6"

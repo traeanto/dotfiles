@@ -16,13 +16,3 @@
     :vexpand "false"
 	:hexpand "false"
 (bar))
-
-; Calendar
-(defwindow calendar
-    :monitor 0
-    :geometry   (geometry   :x "0"
-                            :y "10px"
-                            :height "60px"
-                            :width "270px"
-                            :anchor "left bottom")
-(cal))

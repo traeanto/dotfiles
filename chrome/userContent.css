@@ -1,8 +1,13 @@
+@import "theme.css";
 
 /* New tab background color */
 @-moz-document url("about:home"),url("about:blank"),url("about:newtab"),url("about:privatebrowsing"){
-    body{background-color: #24273a !important;}
+    body {
+		background-color: var(--color-base) !important;
+	}
 }
 
 /* Scrollbar */
-:root{ scrollbar-color: #c6a0f6 #24273a }
+:root{
+	scrollbar-color: var(--color-magenta) var(--color-base);
+}

@@ -3,18 +3,18 @@
     padding-block-start: 0px !important;
     border:     none !important;
     box-shadow: none !important;
-    background: #24273a !important;
+    background: var(--color-base) !important;
 }
 
 
 #nav-bar-customization-target {
-	color: #cad3f5 !important;
+	color: var(--color-text) !important;
 }
 
 #navigator-toolbox { border: none !important; }
 
 #urlbar, .searchbar-textbox {
-    color: #cad3f5 !important;
+    color: var(--color-text) !important;
 }
 
 #urlbar-container {
@@ -47,8 +47,8 @@
 #fullscr-toggler { display : none !important; }
 
 #urlbar-results {
-    color: #cad3f5;
-    background-color: #24273a !important;
+    color: var(--color-text) !important;
+    background-color: var(--color-base) !important;
 	padding: 10px;
 	margin-top: -1px;
     border-radius: 0 0 10px 10px !important;

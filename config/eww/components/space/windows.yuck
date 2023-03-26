@@ -1,0 +1,19 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Window Sections
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Screencast
+(defwindow screencast-closer
+	:monitor 0
+	:geometry	(geometry	:width "100%"
+							:height "100%"
+							:anchor "center right")
+(closer :window "screencast"))
+
+; Question
+(defwindow tswitch-question-closer
+	:monitor 0
+	:geometry	(geometry	:width "100%"
+							:height "100%"
+							:anchor "center right")
+(closer :window "tswitch-question"))

@@ -1,0 +1,9 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Window Sections
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Themes Switch
+(defwindow tswitch-question
+	:monitor 0
+	:geometry	(geometry	:anchor "center")
+(tswitch-question))

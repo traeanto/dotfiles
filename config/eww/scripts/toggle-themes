@@ -1,0 +1,53 @@
+#!/usr/bin/bash
+
+# Indicator
+CURRENT_THEME="kuroneko" # keep on line 4
+SCRIPTFILE="$HOME/.config/eww/scripts/toggle-themes"
+
+EWW_BAR="$HOME/.config/eww/eww.scss"
+HYPRLAND="$HOME/.config/hypr/hyprland.conf"
+KITTY="$HOME/.config/kitty/kitty.conf"
+ROFI="$HOME/.config/rofi/scripts/appmenu"
+FIREFOX="$HOME/.mozilla/firefox/*.default-release/chrome/theme.css"
+HOMEPAGE="$HOME/.local/share/homepage/index.html"
+FISH_LPROMPT="$HOME/.config/fish/functions/fish_prompt.fish"
+FISH_RPROMPT="$HOME/.config/fish/functions/fish_right_prompt.fish"
+DUNSTRC="$HOME/.config/dunst/dunstrc"
+DUNSTRCK="$HOME/.config/dunst/kuroneko"
+DUNSTRCS="$HOME/.config/dunst/shironeko"
+	
+if [ "$CURRENT_THEME" != "kuroneko" ]; then
+	swww img $HOME/.local/share/wallpapers/fuji.png --transition-type wave --transition-wave 20,20 &
+
+	sed -i $SCRIPTFILE -e '4s|shironeko|kuroneko|'
+	sed -i $EWW_BAR -e 's|shironeko|kuroneko|'
+	sed -i $HYPRLAND -e 's|shironeko|kuroneko|'
+	sed -i $KITTY -e 's|shironeko|kuroneko|'
+	sed -i $ROFI -e 's|shironeko|kuroneko|'
+	sed -i $FIREFOX -e 's|shironeko|kuroneko|'
+	sed -i $HOMEPAGE -e 's|shironeko|kuroneko|'
+	sed -i $FISH_LPROMPT -e 's|shironeko|kuroneko|'
+	sed -i $FISH_RPROMPT -e 's|shironeko|kuroneko|'
+	
+	cp $DUNSTRCK $DUNSTRC
+	kill "$(pgrep dunst)" && dunst &
+
+	sleep .2 && notify-send "Theme has changed" -h string:synchronous:display-theme -u low &
+elif [ "$CURRENT_THEME" != "shironeko" ]; then
+	swww img $HOME/.local/share/wallpapers/cloud.png --transition-type wave --transition-wave 20,20 &
+
+	sed -i $SCRIPTFILE -e '4s|kuroneko|shironeko|'
+	sed -i $EWW_BAR -e 's|kuroneko|shironeko|'
+	sed -i $HYPRLAND -e 's|kuroneko|shironeko|'
+	sed -i $KITTY -e 's|kuroneko|shironeko|'
+	sed -i $ROFI -e 's|kuroneko|shironeko|'
+	sed -i $FIREFOX -e 's|kuroneko|shironeko|'
+	sed -i $HOMEPAGE -e 's|kuroneko|shironeko|'
+	sed -i $FISH_LPROMPT -e 's|kuroneko|shironeko|'
+	sed -i $FISH_RPROMPT -e 's|kuroneko|shironeko|'
+	
+	cp $DUNSTRCS $DUNSTRC
+	kill "$(pgrep dunst)" && dunst &
+
+	sleep .2 && notify-send "Theme has changed" -h string:synchronous:display-theme -u low &
+fi

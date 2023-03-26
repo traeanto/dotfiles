@@ -1,0 +1,19 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Window Sections
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Clipboard
+(defwindow clipboard
+	:monitor 0
+	:geometry	(geometry	:width "400px"
+							:anchor "left top")
+	:vexpand "false"
+	:hexpand "false"
+(clipboard))
+
+; Clipboard - input
+(defwindow clipboard-input
+	:monitor 0
+	:focusable "true"
+	:geometry	(geometry	:anchor "center")
+(clipboard-input))

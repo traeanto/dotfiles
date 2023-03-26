@@ -4,7 +4,7 @@ STATUS="$(cat /sys/class/net/w*/operstate)"
 SIGNAL="$(iwconfig wlan0 | awk '/Signal level/ { print $4 }' | sed 's/level=-//')"
 
 icon() {
-    [[ $STATUS == down ]] && echo "󰤭" && exit
+    [[ $STATUS == down || -z "$SIGNAL" ]] && echo "󰤭" && exit
     if [ "$SIGNAL" -lt "20" ]; then
 	    icon="󰤨"
     elif [ "$SIGNAL" -lt "40" ]; then
@@ -23,7 +23,9 @@ percent() {
     echo $PERCEN
 }
 
-[ "$1" = "icon" ] && icon && exit
-[ "$1" = "percent" ] && percent && exit
-
-exit
+case "$1" in
+	"icon") icon
+    ;;
+    "percent") percent
+    ;;
+esac

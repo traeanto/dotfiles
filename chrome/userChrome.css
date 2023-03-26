@@ -1,5 +1,5 @@
-@import 'components/colors.css';
-@import 'components/tabs.css';
-@import 'components/navbar.css';
-@import 'components/status.css';
-@import 'components/responsive.css';
+@import "theme.css";
+@import "components/tabs.css";
+@import "components/navbar.css";
+@import "components/status.css";
+@import "components/responsive.css";

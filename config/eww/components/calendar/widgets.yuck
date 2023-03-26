@@ -1,0 +1,14 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Widget Sections
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Calendar
+(defwidget cal []
+    (box    :orientation "v"
+            :class "cal-box"
+        (box    :class "cal-inner-box"
+        (calendar   :class "cal"
+                    :day calendar_day
+                    :year calendar_year))))
+(defpoll calendar_day   :interval "10h" "date '+%d'")
+(defpoll calendar_year  :interval "10h" "date '+%Y'")

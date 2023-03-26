@@ -1,0 +1,32 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Widget Sections
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Searchbar
+(defwidget clipboard-button []
+	(eventbox	:class "clipboard-button"
+				:cursor "pointer"
+	(button		:class "button-clipboard"
+				:onclick "eww open clipboard-input" "")))
+
+; Item
+(defwidget clipboard-list []
+	(scroll		:class "clipboard-list"
+				:vscroll "true"
+				:hscroll "false"
+				:height "600"
+	(literal	:content clip-list)))
+(deflisten clip-list "$HOME/.config/eww/scripts/clipboard list")
+
+; Clipboard - input
+(defwidget clipboard-input []
+	(input :class "input-clipboard"
+		   :width "500"
+		   :onaccept "${clip-input} '{}' && eww close clipboard-input"))
+
+; Clipboard
+(defwidget clipboard []
+	(box   :class "eww_clipboard"
+		   :orientation "v"
+		   :space-evenly "false"
+(clipboard-button)(clipboard-list)))

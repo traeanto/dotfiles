@@ -1,0 +1,15 @@
+#!/usr/bin/bash
+
+INDICATE="$HOME/.config/eww/scripts/toggle-themes"
+STATUS="$(pgrep 'swww-daemon')"
+THEME="$(cat $INDICATE | grep "CURRENT_THEME=" | awk -F  '=' '{print $NF}' | tr -d '""')"
+
+# Check daemon
+[[ -z ${STATUS} ]] && swww init
+
+if [ "$THEME" == "kuroneko" ]; then
+	PICT="fuji.png"
+elif [ "$THEME" == "shironeko" ]; then
+	PICT="cloud.png"
+fi
+swww img ~/.local/share/wallpapers/$PICT --transition-type simple

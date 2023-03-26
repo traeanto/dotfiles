@@ -1,0 +1,111 @@
+[global]
+
+# The monitor to be displayed to
+monitor = 0
+
+# Follow monitor with mouse
+follow = mouse
+
+# Geometry
+width = (111, 444)
+height = 222
+
+# Position
+origin = top-right
+offset = 20x20
+
+# Progress bar
+progress_bar_height = 8
+progress_bar_min_width = 0
+progress_bar_max_width = 444
+progress_bar_frame_width = 0
+
+# Show how many messages are hidden
+indicate_hidden = no
+
+# Shrink window if it's smaller than the width.
+shrink = no
+
+# Set notification padding
+padding = 16
+horizontal_padding = 16
+
+# Frame (border)
+frame_width = 0
+frame_color = "#ccd0da"
+
+# Draw a line between multiple notifications
+#separator_height = 6
+separator_color = "#c6a0f6"
+
+# Idle time
+idle_threshold = 120
+
+# Rounded corner
+corner_radius = 10
+
+# Font family
+font = "monospace 10"
+
+# Reference for markup and formatting:
+#  <b>bold</b>
+#  <i>italic</i>
+#  <s>strikethrough</s>
+#  <u>underline</u>
+#  <https://developer.gnome.org/pango/stable/pango-Markup.html>.
+#  %a appname
+#  %s summary
+#  %b body
+#  %i iconname (including its path)
+#  %I iconname (without its path)
+#  %p progress value if set ([  0%] to [100%]) or nothing
+#  %n progress value if set without any extra characters
+#  %% Literal %
+markup = full
+format = "%s\n%b"
+
+# Content align
+alignment = left
+
+# Show age of message if message is old
+show_age_threshold = 60
+
+# Align icons left/right/off
+icon_position = left
+
+# Scale small icons up to this size, set to 0 to disable.
+min_icon_size = 48
+
+# Scale larger icons down to this size, set to 0 to disable
+max_icon_size = 60
+
+# Paths to default icons.
+#icon_path = $HOME/.local/share/icons/Papirus-Sweet/48x48/status
+icon_theme = "Papirus-Sweet"
+enable_recursive_icon_lookup = true
+
+# Avoid timing out hidden notifications
+sticky_history = false
+
+# Defines list of actions for each mouse event
+mouse_left_click = close_current
+mouse_middle_click = context_all
+mouse_right_click = close_all
+
+[urgency_low]
+foreground = "#4c4f69"
+background = "#e6e9ef"
+highlight = "#8aadf4"
+timeout = 3
+
+[urgency_normal]
+foreground = "#4c4f69"
+background = "#e6e9ef"
+highlight = "#8aadf4"
+timeout = 3
+
+[urgency_critical]
+foreground = "#4c4f69"
+background = "#e6e9ef"
+highlight = "#8aadf4"
+timeout = 3

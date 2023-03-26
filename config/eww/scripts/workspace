@@ -52,14 +52,17 @@ workspaces() {
     if [[ $f9 == "9" ||	$o9 == "9" ]]; then
         workspace+=("(button :onclick \"hyprctl dispatch workspace 9\" :class \"$o9$f9\" \"\")")
     fi
-    if [[ $f10 == "10" ||	$o10 == "10" ]]; then
+    if [[ $f10 == "10" || $o10 == "10" ]]; then
         workspace+=("(button :onclick \"hyprctl dispatch workspace 10\" :class \"$o10$f10\" \"\")")
     fi
 
-    echo "($(IFS=; echo "${workspace[*]}"))"
+    echo "(${workspace[*]})"
 }
 
 workspaces
-socat2 -u UNIX-CONNECT:/tmp/hypr/"$HYPRLAND_INSTANCE_SIGNATURE"/.socket2.sock - | while read -r event; do 
+monitoring() {
+	socat2 -u UNIX-CONNECT:/tmp/hypr/"$HYPRLAND_INSTANCE_SIGNATURE"/.socket2.sock -
+}
+monitoring | while read -r event; do 
     workspaces "$event"
 done

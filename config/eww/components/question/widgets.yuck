@@ -1,0 +1,18 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Widget Sections
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Theme Switch
+(defwidget tswitch-question []
+	(box   :class "question-container"
+		   :orientation "v"
+	(label :class "label-question"
+		   :text "Change current themes?")
+	(box   :orientation "h"
+		   (eventbox	:cursor "pointer"
+		   				(button	:class "button-question"
+								:onclick "${toggle-themes} && ${tswitch-close}" "Yes"))
+		   (eventbox	:cursor "pointer"
+		   				(button	:class "button-question"
+								:onclick "${tswitch-close}" "No")))))
+(defvar tswitch-close "eww close tswitch-question-closer tswitch-question")

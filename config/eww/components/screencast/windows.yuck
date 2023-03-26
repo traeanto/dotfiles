@@ -1,0 +1,9 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Window Sections
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Calendar
+(defwindow screencast
+	:monitor 0
+	:geometry	(geometry	:anchor "center right")
+(screencast))

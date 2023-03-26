@@ -1,0 +1,47 @@
+#!/usr/bin/bash
+
+DIR="$HOME/.cache/eww_clipboard"
+[[ -d "$DIR" ]] || mkdir -p "$DIR"
+FILENAME="$DIR/list"
+[[ -d "$FILENAME" ]] || touch "$FILENAME"
+
+LIST=("$(cat $FILENAME)")
+
+input() {
+	if [[ -z "$@" || "$@" == " " ]]; then
+		exit
+	else
+		echo $@ >> $FILENAME
+	fi
+}
+
+list() {
+	LISTLINKS=("box :orientation \"v\" :space-evenly \"false\" ")
+	nu=0
+	while read -r i; do
+		(( nu++ ))
+		[[ "$i" == *'"'* ]] && q="'" || q='"'
+		[[ "${#i}" -gt 48 ]] && l="${i::48}" && l+="..." || l=$i
+		LISTLINKS+=("(button :onclick $q""wl-copy \\$q$i\\$q$q \
+							 :onrightclick \"sed -i $nu""d $FILENAME\" \
+							 :class \"clip-links\" \
+							 :halign \"start\" $q$l$q)")
+	done < $FILENAME
+	
+    echo "(${LISTLINKS[*]})"
+}
+
+listing() {
+	trap "exit" SIGINT SIGTERM
+	while true; do
+		list
+	    watch -gn0 "ls -l $FILENAME" &> /dev/null && list
+	done
+}
+
+case "$1" in
+	"input") input $2
+    ;;
+	"list") listing
+    ;;
+esac
