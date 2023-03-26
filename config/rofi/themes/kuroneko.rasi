@@ -1,0 +1,59 @@
+window {
+	fullscreen: true;
+	background-color: #24273a;
+	padding: 50px;
+}
+
+mainbox {
+	background-color: transparent;
+	spacing: 35px;
+}
+
+inputbar {
+	background-color: #8aadf4;
+	text-color: #24273a;
+	margin: 0 50% 0 0;
+	padding: 10px 20px;
+	spacing: 20px;
+	border-radius: 100%;
+}
+
+prompt { text-color: #24273a; }
+textbox-prompt-colon { enabled: false; }
+entry {
+	placeholder: "Search";
+	placeholder-color: #24273a;
+}
+num-filtered-rows, num-rows, textbox-num-sep { enabled: false; }
+
+listview {
+	border: 0;
+	columns: 8;
+	fixed-height: true;
+	fixed-columns: true;
+	spacing: 25px;
+	scrollbar: false;
+}
+
+element {
+	spacing: 10px;
+	padding: 20px 10px;
+	border-radius: 10px;
+ 	orientation: vertical;
+}
+
+element normal.normal {
+	text-color: #cad3f5;
+	background-color: #363a4f;
+}
+element alternate.normal {
+	text-color: #cad3f5;
+	background-color: #363a4f;
+}
+element selected.normal {
+	text-color: #24273a;
+	background-color: #8aadf4;
+}
+
+element-icon { size: 8%; }
+element-text { horizontal-align: 0.5; }

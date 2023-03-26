@@ -1,0 +1,7 @@
+configuration {
+	show-icons: true;
+	disable-history: true;
+	cycle: true;
+	steal-focus: false;
+	display-drun: "";
+}

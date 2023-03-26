@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+
+rofi -theme-str '@import "kuroneko.rasi"' -show drun
