@@ -1,8 +1,7 @@
 <pre>
-  <p align="center"><b> ✨ Nilvaela's configuration files ✨ </b>
-  making with love <3 
-  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  <a href="">setup</a> • <a href="">keybinds</a></p>
+<p align="center">
+<b> ✨ Nilvaela's configuration files ✨ </b>
+making with love <3
 </pre>
 
 ### 👋 Hi there, thanks for dropping by!
@@ -20,5 +19,9 @@ Here are some details about my setup:
 + **File Manager**: [Thunar](https://git.xfce.org/xfce/thunar/) customized side-pane!
 + **Launcher**: [rofi](https://github.com/davatorium/rofi/) which blazing fast!
 + **Browser**: Firefox
+
+<h1></h1>
+<pre><p align="center">
+<a href="">setup</a> • <a href="">keybinds</a></p></pre>
 
 <h1></h1>
