@@ -28,7 +28,9 @@ Here are some details about my setup:
 <br>
 
 <div align="center">
-```ocaml
+
+<pre>
 CLICK OR TAP ❲☰❳ TO SHOW TABLE-OF-CONTENTS
-```
+</pre>
+
 </div>
