@@ -20,7 +20,6 @@ Here are some details about my setup:
 + **Launcher**: [rofi](https://github.com/davatorium/rofi/) which blazing fast!
 + **Browser**: Firefox
 
-<h1></h1>
 <pre><p align="center">
 <a href="">setup</a> • <a href="">keybinds</a></p></pre>
 
