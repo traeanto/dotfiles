@@ -3,7 +3,7 @@
 <b>✨ Nilvaela's configuration files ✨</b>
 making with love <3
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-<a href="#-setup">setup</a> • <a href="">keybinds</a></p></pre>
+<a href="#-setup">setup</a> • <a href="#-key-bindings">keybinds</a></p></pre>
 
 <img align="right" width="400px" src="https://i.imgur.com/tn4E4v8.png"/>
 
@@ -64,4 +64,25 @@ hyprland xdg-desktop-portal-hyprland kitty fish swww nwg-look rofi-wayland eww-w
 
 <br>
 
-<b>2. Dotfiles Placement</b>
+<b>2. Install my Hyprland configuration files</b>
+
+Clone dotfiles repository
+
+```shell
+git clone https://github.com/traeanto/dotfiles.git
+cd dotfiles
+```
+
+Dotfiles user's home placement
+
+```shell
+cp -r bin ~/.local/
+cp -r config/. ~/.config/
+cp -r icons ~/.local/share/
+cp -r fonts ~/.local/share/
+cp -r homepage ~/.local/share/
+cp -r wallpapers ~/.local/share/
+cp -r chrome ~/.mozilla/firefox/*.default-release/
+```
+
+## #️⃣ KEY BINDINGS
