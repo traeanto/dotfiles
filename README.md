@@ -25,6 +25,10 @@ Here are some details about my setup:
 + **Music Player**: [Ncmpcpp](https://github.com/ncmpcpp/ncmpcpp) music in background!
 + **Browser**: Firefox
 
+<br>
+
+<div align="center">
 ```ocaml
 CLICK OR TAP ❲☰❳ TO SHOW TABLE-OF-CONTENTS
 ```
+</div>
