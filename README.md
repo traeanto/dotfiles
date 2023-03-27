@@ -1,4 +1,4 @@
-<pre id="top">
+<pre>
 <p align="center">
 <b>✨ Nilvaela's configuration files ✨</b>
 making with love <3
@@ -124,6 +124,6 @@ User's key configuration on `~/.config/hypr/config/keybinds.conf`
 
 <div align="center">
 <pre>
-<a href="#top">GO TO TOP</a>
+<a href="#readme">GO TO TOP</a>
 </pre>
 </div>
