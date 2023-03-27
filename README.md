@@ -1,6 +1,6 @@
 <pre>
 <p align="center">
-<b> ✨ Nilvaela's configuration files ✨ </b>
+<b>✨ Nilvaela's configuration files ✨</b>
 making with love <3
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 <a href="">setup</a> • <a href="">keybinds</a></p></pre>
@@ -28,9 +28,11 @@ Here are some details about my setup:
 <br>
 
 <div align="center">
-
 <pre>
 CLICK OR TAP ❲☰❳ TO SHOW TABLE-OF-CONTENTS
 </pre>
-
 </div>
+
+<br>
+
+## 🔧 SETUP
