@@ -1,9 +1,9 @@
-<pre>
+<pre id="top">
 <p align="center">
 <b>✨ Nilvaela's configuration files ✨</b>
 making with love <3
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-<a href="#-setup">setup</a> • <a href="#-key-bindings">keybinds</a></p></pre>
+<a href="#-setup">setup</a> • <a href="#%EF%B8%8F⃣-key-bindings">keybinds</a></p></pre>
 
 <img align="right" width="400px" src="https://i.imgur.com/tn4E4v8.png"/>
 
@@ -86,3 +86,44 @@ cp -r chrome ~/.mozilla/firefox/*.default-release/
 ```
 
 ## #️⃣ KEY BINDINGS
+
+User's key configuration on `~/.config/hypr/config/keybinds.conf`
+
+| Key | Action |
+|:-|:-|
+|||
+| **Windows** ||
+| <kbd>super</kbd> + <kbd>shift</kbd> + <kbd>q</kbd> | Exit from hyprland |
+| <kbd>super</kbd> + <kbd>⯇</kbd> / <kbd>⯅</kbd> / <kbd>⯈</kbd> / <kbd>⯆</kbd> | Change focus by direction |
+| <kbd>super</kbd> + <kbd>shift</kbd> + <kbd>⯇</kbd> / <kbd>⯅</kbd> / <kbd>⯈</kbd> / <kbd>⯆</kbd> | Move client by direction |
+| <kbd>super</kbd> + <kbd>control</kbd> + <kbd>⯇</kbd> / <kbd>⯅</kbd> / <kbd>⯈</kbd> / <kbd>⯆</kbd> | Resize client window |
+| <kbd>super</kbd> + <kbd>1</kbd> / <kbd>2</kbd> / <kbd>3</kbd> / <kbd>4</kbd> / <kbd>5</kbd> / <kbd>6</kbd> / <kbd>7</kbd> / <kbd>8</kbd> | Move to N desktop/workspace |
+| <kbd>super</kbd> + <kbd>shift</kbd> + <kbd>1</kbd> / <kbd>2</kbd> / <kbd>3</kbd> / <kbd>4</kbd> / <kbd>5</kbd> / <kbd>6</kbd> / <kbd>7</kbd> / <kbd>8</kbd> | Move focused window to N desktop/workspace |
+|||
+| **Applications** ||
+| <kbd>super</kbd> + <kbd>return</kbd> | Open terminal emulator |
+| <kbd>super</kbd> + <kbd>r</kbd> | Open application launcher |
+| <kbd>super</kbd> + <kbd>e</kbd> | Open file manager |
+|||
+| **Clients** ||
+| <kbd>super</kbd> + <kbd>c</kbd> | Close focused client |
+| <kbd>super</kbd> + <kbd>shift</kbd> + <kbd>c</kbd> | Kill focused client |
+| <kbd>super</kbd> + <kbd>f</kbd> | Toggle fullscreen |
+| <kbd>super</kbd> + <kbd>v</kbd> | Toggle floating |
+|||
+| **Multimedia**||
+| <kbd>print</kbd> | Selected screenshot |
+| <kbd>print</kbd> + <kbd>shift</kbd> | Full screenshot |
+| <kbd>XF86MonBrightnessUp</kbd> | Increase display brightness |
+| <kbd>XF86MonBrightnessDown</kbd> | Decrease display brightness |
+| <kbd>XF86AudioMute</kbd> | Toggle mute audio |
+| <kbd>XF86AudioRaiseVolume</kbd> | Increase audio volume |
+| <kbd>XF86AudioLowerVolume</kbd> | Decrease audio volume |
+
+<br>
+
+<div align="center">
+<pre>
+<a href="#top">GO TO TOP</a>
+</pre>
+</div>
