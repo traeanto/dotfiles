@@ -5,7 +5,7 @@ making with love <3
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 <a href="#-setup">setup</a> • <a href="">keybinds</a></p></pre>
 
-<img align="right" width="400px" src="https://i.imgur.com/rTxFQI7.png"/>
+<img align="right" width="400px" src="https://i.imgur.com/tn4E4v8.png"/>
 
 ### 👋 Hi there, thanks for dropping by!
 
@@ -34,3 +34,34 @@ CLICK OR TAP ❲☰❳ TO SHOW TABLE-OF-CONTENTS
 </div>
 
 ## 🔧 SETUP
+Here are the instructions you should follow to replicate my configuration setup.
+
+<b>1. Depedencies Installation</b>
+<details>
+<summary>Arch-based Linux distributions</summary>
+
+```shell
+yay -S hyprland-git xdg-desktop-portal-hyprland-git eww-wayland rofi-lbonn-wayland-git dunst nwg-look kitty fish swww grim slurp imagemagick wl-clipboard wf-recorder
+```
+For other sysinit like openrc, you need install additional package for restore screen brightness at startup
+
+```shell
+yay -S backlight-openrc
+```
+</details>
+
+<details>
+<summary>Another independent Linux distributions</summary>
+<p>
+
+Do it yourself, here the depend names you need to install
+
+```shell
+hyprland xdg-desktop-portal-hyprland kitty fish swww nwg-look rofi-wayland eww-wayland dunst grim slurp imagemagick wl-clipboard wf-recorder
+```
+</p>
+</details>
+
+<br>
+
+<b>2. Dotfiles Placement</b>
