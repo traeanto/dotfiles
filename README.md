@@ -3,7 +3,7 @@
 <b>✨ Nilvaela's configuration files ✨</b>
 making with love <3
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-<a href="">setup</a> • <a href="">keybinds</a></p></pre>
+<a href="#-setup">setup</a> • <a href="">keybinds</a></p></pre>
 
 <img align="right" width="400px" src="https://i.imgur.com/rTxFQI7.png"/>
 
@@ -32,7 +32,5 @@ Here are some details about my setup:
 CLICK OR TAP ❲☰❳ TO SHOW TABLE-OF-CONTENTS
 </pre>
 </div>
-
-<br>
 
 ## 🔧 SETUP
