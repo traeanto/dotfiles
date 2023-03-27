@@ -1,8 +1,8 @@
 <pre>
   <p align="center"><b> ✨ Nilvaela's configuration files ✨ </b>
-  making with love <3
-  <h1></h1>
-  <p align="center"><a href="">setup</a> • <a href="">keybinds</a></p></p>
+  making with love <3 
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  <a href="">setup</a> • <a href="">keybinds</a></p>
 </pre>
 
 ### 👋 Hi there, thanks for dropping by!
