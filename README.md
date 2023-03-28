@@ -106,14 +106,14 @@ User's key configuration on `~/.config/hypr/config/keybinds.conf`
 | <kbd>super</kbd> + <kbd>e</kbd> | Open file manager |
 |||
 | **Clients** ||
-| <kbd>super</kbd> + <kbd>c</kbd> | Close focused client |
-| <kbd>super</kbd> + <kbd>shift</kbd> + <kbd>c</kbd> | Kill focused client |
 | <kbd>super</kbd> + <kbd>f</kbd> | Toggle fullscreen |
 | <kbd>super</kbd> + <kbd>v</kbd> | Toggle floating |
+| <kbd>super</kbd> + <kbd>c</kbd> | Close focused client |
+| <kbd>super</kbd> + <kbd>shift</kbd> + <kbd>c</kbd> | Kill focused client |
 |||
 | **Multimedia**||
 | <kbd>print</kbd> | Selected screenshot |
-| <kbd>print</kbd> + <kbd>shift</kbd> | Full screenshot |
+| <kbd>shift</kbd> + <kbd>print</kbd> | Full screenshot |
 | <kbd>XF86MonBrightnessUp</kbd> | Increase display brightness |
 | <kbd>XF86MonBrightnessDown</kbd> | Decrease display brightness |
 | <kbd>XF86AudioMute</kbd> | Toggle mute audio |

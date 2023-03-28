@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+
+PID="$(hyprctl activewindow | grep pid | awk '{ print $2; }')"
+kill $PID
