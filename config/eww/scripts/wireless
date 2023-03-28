@@ -1,19 +1,19 @@
 #!/usr/bin/bash
 
 STATUS="$(cat /sys/class/net/w*/operstate)"
-SIGNAL="$(iwconfig wlan0 | awk '/Signal level/ { print $4 }' | sed 's/level=-//')"
+SIGNAL="$(nmcli device wifi | awk '/\*/{if (NR!=1) {print $8}}')"
 
 icon() {
     [[ $STATUS == down || -z "$SIGNAL" ]] && echo "󰤭" && exit
-    if [ "$SIGNAL" -lt "20" ]; then
+    if [ "$SIGNAL" -gt "80" ]; then
 	    icon="󰤨"
-    elif [ "$SIGNAL" -lt "40" ]; then
+    elif [ "$SIGNAL" -gt "50" ]; then
 	    icon="󰤥"
-    elif [ "$SIGNAL" -lt "60" ]; then
+    elif [ "$SIGNAL" -gt "30" ]; then
         icon="󰤢"
-    elif [ "$SIGNAL" -lt "80" ]; then
+    elif [ "$SIGNAL" -gt "10" ]; then
       	icon="󰤟"
-    elif [ "$SIGNAL" -lt "100" ]; then
+    elif [ "$SIGNAL" -gt "0" ]; then
         icon="󰤯"
     fi
     echo "$icon"

@@ -41,7 +41,7 @@ Here are the instructions you should follow to replicate my configuration setup.
 <summary>Arch-based Linux distributions</summary>
 
 ```shell
-yay -S hyprland-git xdg-desktop-portal-hyprland-git eww-wayland rofi-lbonn-wayland-git dunst nwg-look kitty fish swww grim slurp imagemagick wl-clipboard wf-recorder
+yay -S hyprland-git xdg-desktop-portal-hyprland-git eww-wayland rofi-lbonn-wayland-git dunst nwg-look kitty fish swww grim slurp imagemagick wl-clipboard wf-recorder networkmanager brightnessctl
 ```
 For other sysinit like openrc, you need install additional package for restore screen brightness at startup
 
@@ -57,7 +57,7 @@ yay -S backlight-openrc
 Do it yourself, here the depend names you need to install
 
 ```shell
-hyprland xdg-desktop-portal-hyprland kitty fish swww nwg-look rofi-wayland eww-wayland dunst grim slurp imagemagick wl-clipboard wf-recorder
+hyprland xdg-desktop-portal-hyprland kitty fish swww nwg-look rofi-wayland eww-wayland dunst grim slurp imagemagick wl-clipboard wf-recorder networkmanager brightnessctl
 ```
 </p>
 </details>
