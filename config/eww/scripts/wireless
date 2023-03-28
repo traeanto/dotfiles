@@ -1,7 +1,10 @@
 #!/usr/bin/bash
 
 STATUS="$(cat /sys/class/net/w*/operstate)"
-SIGNAL="$(nmcli device wifi | awk '/\*/{if (NR!=1) {print $8}}')"
+
+WRSTATUS="$(nmcli device status | grep ' wifi ' | awk '{print $3}')"
+[[ "$WRSTATUS" == "connected" ]] && WRNAME="$(nmcli device status | grep ' wifi ' | awk '{print $4}')"
+[[ -z "$WRNAME" ]] || SIGNAL="$(nmcli device wifi | grep $WRNAME | awk '{print $8}')"
 
 icon() {
     [[ $STATUS == down || -z "$SIGNAL" ]] && echo "󰤭" && exit
@@ -19,13 +22,7 @@ icon() {
     echo "$icon"
 }
 
-percent() {
-    echo $PERCEN
-}
-
 case "$1" in
 	"icon") icon
-    ;;
-    "percent") percent
     ;;
 esac
