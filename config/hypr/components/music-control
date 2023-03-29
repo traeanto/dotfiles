@@ -1,0 +1,50 @@
+#!/usr/bin/bash
+
+MPDCONF="$HOME/.config/mpd/mpd.conf"
+DIR="$HOME$(cat $MPDCONF | grep 'music_directory' | tr -d '"' | sed 's/[^/]*//')"
+MPDCURRENT="$(mpc current)"
+ALBUMART_DIR="/tmp/album_art"
+
+[[ -d "$ALBUMART_DIR" ]] || mkdir "$ALBUMART_DIR"
+
+if [ -z "$MPDCURRENT" ]; then
+	stop="playerctl stop"
+	play="playerctl play-pause"
+	next="playerctl next"
+	prev="playerctl previous"
+else
+	stop="mpc stop"
+	play="mpc toggle"
+	next="mpc next"
+	prev="mpc prev"
+fi
+
+case "${1}" in
+	stop) "$($stop)"
+    ;;
+	play) "$($play || mpc toggle)"
+    ;;
+	next) "$($next)"
+    ;;
+	prev) "$($prev)"
+    ;;
+esac
+
+sleep .7 # playerctl problem
+if [ ! -z "$MPDCURRENT" ]; then
+	CURRENT="$(mpc current -f %file%)"
+	ARTIST="$(mpc current -f %artist%)"
+	TITLE="$(mpc current -f %title%)"
+	COVER="$ALBUMART_DIR/$ARTIS-$TITLE-cover.jpg"
+
+	if [ ! -f "$COVER" ]; then
+		ffmpeg -i "$DIR/$CURRENT" -an -frames:v 1 -vf scale=200:200 "$COVER" -y
+	fi
+else
+	ARTIST="$(playerctl metadata artist)"
+	TITLE="$(playerctl metadata title)"
+	COVER="$(playerctl metadata mpris:artUrl)"
+fi
+
+notify-send "$ARTIST" "$TITLE" \
+			-h string:synchronous:audio-music -i "$COVER" -u low

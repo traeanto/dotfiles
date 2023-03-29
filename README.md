@@ -119,6 +119,12 @@ User's key configuration on `~/.config/hypr/config/keybinds.conf`
 | <kbd>XF86AudioMute</kbd> | Toggle mute audio |
 | <kbd>XF86AudioRaiseVolume</kbd> | Increase audio volume |
 | <kbd>XF86AudioLowerVolume</kbd> | Decrease audio volume |
+|||
+| **Music**||
+| <kbd>XF86AudioStop</kbd> | Stop playing music |
+| <kbd>XF86AudioPlay</kbd> | Toggle play/pause |
+| <kbd>XF86AudioNext</kbd> | Next track |
+| <kbd>XF86AudioPrev</kbd> | Previous track |
 
 <br>
 
