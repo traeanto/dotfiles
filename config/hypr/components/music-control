@@ -2,12 +2,12 @@
 
 MPDCONF="$HOME/.config/mpd/mpd.conf"
 DIR="$HOME$(cat $MPDCONF | grep 'music_directory' | tr -d '"' | sed 's/[^/]*//')"
-MPDCURRENT="$(mpc current)"
 ALBUMART_DIR="/tmp/album_art"
 
 [[ -d "$ALBUMART_DIR" ]] || mkdir "$ALBUMART_DIR"
 
-if [ -z "$MPDCURRENT" ]; then
+if [ -z "$(mpc current)" ]; then
+	PCLTITLE="playerctl metadata title"
 	stop="playerctl stop"
 	play="playerctl play-pause"
 	next="playerctl next"
@@ -30,8 +30,12 @@ case "${1}" in
     ;;
 esac
 
-sleep .7 # playerctl problem
-if [ ! -z "$MPDCURRENT" ]; then
+notify() {
+	notify-send "$ARTIST" "$TITLE" \
+				-h string:synchronous:audio-music -i "$COVER" -u low
+}
+
+if [ ! -z "$(mpc current)" ]; then
 	CURRENT="$(mpc current -f %file%)"
 	ARTIST="$(mpc current -f %artist%)"
 	TITLE="$(mpc current -f %title%)"
@@ -40,11 +44,14 @@ if [ ! -z "$MPDCURRENT" ]; then
 	if [ ! -f "$COVER" ]; then
 		ffmpeg -i "$DIR/$CURRENT" -an -frames:v 1 -vf scale=200:200 "$COVER" -y
 	fi
-else
+	
+	notify
+elif [ "$(playerctl status)" != "No players found" ]; then
+    [[ "$(playerctl status)" == "Playing" ]] && watch -gn0 "$PCLTITLE"
 	ARTIST="$(playerctl metadata artist)"
 	TITLE="$(playerctl metadata title)"
 	COVER="$(playerctl metadata mpris:artUrl)"
+	
+	notify
 fi
 
-notify-send "$ARTIST" "$TITLE" \
-			-h string:synchronous:audio-music -i "$COVER" -u low
