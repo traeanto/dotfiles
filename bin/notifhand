@@ -1,8 +1,9 @@
 #!/usr/bin/bash
 
 notify() {
+	ICON="$HOME/.local/share/icons/status/music.svg"
 	notify-send "$ARTIST" "$TITLE" \
-				-h string:synchronous:audio-music -i "$COVER" -u low
+				-h string:synchronous:audio-music -i ${COVER:-${ICON}} -u low
 }
 
 mpd_notify() {
