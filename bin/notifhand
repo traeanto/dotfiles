@@ -1,0 +1,56 @@
+#!/usr/bin/bash
+
+notify() {
+	notify-send "$ARTIST" "$TITLE" \
+				-h string:synchronous:audio-music -i "$COVER" -u low
+}
+
+mpd_notify() {
+	[[ -z "$(pgrep mpd)" ]] && mpd &
+
+	MPDCONF="$HOME/.config/mpd/mpd.conf"
+	MPDDIR="$HOME$(cat $MPDCONF | grep 'music_directory' | tr -d '"' | sed 's/[^/]*//')"
+	MPDALBUMART="/tmp/album_art"
+
+	[[ -d "$MPDALBUMART" ]] || mkdir -p "$MPDALBUMART"
+	
+	trap "exit" SIGINT SIGTERM
+	while true; do
+	    mpc idle
+
+	    CURRENT="$(mpc current -f %file%)"
+		ARTIST="$(mpc current -f %artist%)"
+		TITLE="$(mpc current -f %title%)"
+		COVER="$MPDALBUMART/$ARTIST-$TITLE-cover.jpg"
+
+		if [ ! -f "$COVER" ]; then
+			if [ -n "$CURRENT" ]; then
+				ffmpeg -i "$MPDDIR/$CURRENT" -an -frames:v 1 -vf scale=200:200 "$COVER" -y
+			fi
+		fi
+		
+		notify
+	done
+}
+
+mpris_notify() {
+	[[ -z "$(command -v playerctl)" ]] && exec notify-send "Install playerctl first!"
+	
+	trap "exit" SIGINT SIGTERM
+	while true; do
+		watch -gn0 "playerctl metadata title"
+
+		ARTIST="$(playerctl metadata artist)"
+		TITLE="$(playerctl metadata title)"
+		COVER="$(playerctl metadata mpris:artUrl)"
+
+	    notify
+	done
+}
+
+case "$1" in
+	"mpd") mpd_notify
+	;;
+	"mpris") mpris_notify
+    ;;
+esac

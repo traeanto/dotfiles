@@ -1,11 +1,12 @@
 #!/usr/bin/bash
 
+wallpp &
 eww open bar &
 dunst &
-wallpp &
-mpd &
 lxpolkit &
 pipewire &
 pipewire-pulse &
 wireplumber &
 nwg-look -a &
+notifhand mpd &
+notifhand mpris &
