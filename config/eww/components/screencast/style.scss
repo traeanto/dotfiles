@@ -1,4 +1,4 @@
-.eww_screencast {
+.box_screencast {
 	background-color: $base;
 	border-radius: 10px;
 	margin: 10px;
@@ -6,18 +6,19 @@
 	padding: 10px;
 }
 
-.label-indicator-n, .label-indicator-a {
+.screencast-inactive,
+.screencast-active {
 	font-size: 100px;
 	margin: -40px -20px;
 }
-.label-indicator-n {
+.screencast-inactive {
 	color: $green;
 }
-.label-indicator-a {
+.screencast-active {
 	color: $red;
 }
 
-.screencast-start, .screencast-stop {
+.btn_screencast {
 	font-size: 30px;
 	color: $text;
 	background-color: $base2;
@@ -25,7 +26,7 @@
 	padding:10px;
 	margin-top: 10px;
 }
-.screencast-start:hover, .screencast-stop:hover {
+.btn_screencast:hover {
 	color: $base;
 	background-color: $blue;
 }

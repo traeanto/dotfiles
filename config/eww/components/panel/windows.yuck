@@ -1,0 +1,16 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Window Sections
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Bar    
+(defwindow panel
+	:monitor 0
+	:exclusive true
+	:windowtype "dock"
+	:stacking "fg"
+	:geometry (geometry	:height "100%"
+			  			:width "50px"
+						:anchor "left center")
+	:vexpand "false"
+	:hexpand "false"
+(panel))

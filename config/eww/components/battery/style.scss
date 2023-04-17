@@ -1,0 +1,27 @@
+.box_battery-window {
+	background-color: $base;
+	border-radius: 10px;
+	margin: 10px;
+	box-shadow: 0 0 4px 1px $shadow2;
+	padding: 20px;
+	color: $text;
+}
+
+.lbl-title_battery-window {
+	color: $green;
+	font-weight: bold;
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+
+.icon_battery-window {
+	margin: 15px;
+}
+
+.bar_battery-window {
+	color: $blue;
+}
+
+.lbl_battery-window {
+	margin-left: 10px;
+}

@@ -1,0 +1,313 @@
+.dashboard {
+	background-color: $base3;
+}
+
+// Profile
+.box_dashboard-profile {
+	background-color: $base;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 0 4px 1px $shadow2;
+}
+.dashboard-profile-face {
+	background-size: 180px;
+	min-height: 180px;
+	min-width: 180px;
+	margin-bottom: 10px;
+	border-radius: 100%;
+}
+.dashboard-profile-name {
+	color: $red;
+	font-size: 28px;
+	font-weight: bold;
+}
+.dashboard-profile-username {
+	color: $text2;
+	font-size: 20px;
+	font-weight: bold;
+	font-style: italic;
+}
+
+// System
+.box_dashboard-system {
+	background-color: $base;
+	padding: 20px 10px;
+	border-radius: 10px;
+	box-shadow: 0 0 4px 1px $shadow2;
+}
+.icon_dashboard-system-cpu {
+	font-size: 50px;
+	margin: 25px;
+}
+.bar_dashboard-system-cpu {
+	color: $red;
+	background-color: $base2;
+}
+.icon_dashboard-system-mem {
+	font-size: 50px;
+}
+.bar_dashboard-system-mem {
+	color: $magenta;
+	background-color: $base2;
+}
+.icon_dashboard-system-temp {
+	font-size: 55px;
+}
+.bar_dashboard-system-temp {
+	color: $green;
+	background-color: $base2;
+}
+.icon_dashboard-system-disk {
+	font-size: 60px;
+}
+.bar_dashboard-system-disk {
+	color: $blue;
+	background-color: $base2;
+}
+
+// Clock
+.box_dashboard-clock {
+	font: 60px $font3;
+	font-weight: bold;
+	background-color: $base;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 0 4px 1px $shadow2;
+}
+.dashboard-clock-hour {
+	color: $red;
+}
+.dashboard-clock-sep {
+	color: $teal;
+}
+.dashboard-clock-min {
+	color: $magenta;
+}
+
+// Date
+.box_dashboard-date {
+	font-family: $font2;
+	font-weight: bold;
+	background-color: $base;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 0 4px 1px $shadow2;
+}
+.dashboard-date-dayname {
+	color: $blue;
+	font-size: 30px;
+}
+.dashboard-date-day,.dashboard-date-month {
+	color: $green;
+	font-size: 20px;
+}
+.dashboard-date-year {
+	color: $yellow;
+	font-size: 20px;
+}
+
+// Weather
+.box_dashboard-weather {
+	background-color: $base;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 0 4px 1px $shadow2;
+}
+.dashboard-weather-icon {
+	color: $sky;
+	font: 60px $font2;
+}
+.dashboard-weather-temp {
+	color: $blue;
+	font: 40px $font2;
+	font-weight: bold;
+}
+.dashboard-weather-stat {
+	color: $magenta;
+	font: 25px $font2;
+	font-weight: bold;
+}
+.dashboard-weather-quote {
+	color: $text;
+	font: 15px $font2;
+	font-weight: bold;
+}
+
+// Music
+.box_dashboard-music {
+	background-color: $base;
+	padding: 10px;
+	border-radius: 10px;
+	box-shadow: 0 0 4px 1px $shadow2;
+}
+.dashboard-music-cover {
+	background-size: 150px;
+	min-height: 150px;
+	min-width: 150px;
+	border-radius: 10px;
+}
+.dashboard-music-title {
+	color: $blue;
+	font-size: 25px;
+	font-weight: bold;
+}
+.dashboard-music-artist {
+	color: $orange;
+	font-size: 20px;
+	font-weight: bold;
+}
+.btn_dashboard-music-prev, .btn_dashboard-music-next {
+	color: $text2;
+	font-size: 30px;
+}
+.btn_dashboard-music-toggle {
+	color: $text2;
+	font-size: 50px;
+}
+.bar_dashboard-music trough {
+	background-color: $base2;
+	border-radius: 15px;
+	min-height: 15px;
+	min-width: 200px;
+	margin-left: 10px;
+}
+.bar_dashboard-music trough highlight {
+	background-color: $sky;
+	border-radius: 15px;
+}
+
+// Tray
+.box_dashboard-tray {
+	background-color: $base;
+	padding: 10px;
+	border-radius: 10px;
+	box-shadow: 0 0 4px 1px $shadow2;
+}
+.btn_dashboard-tray-network-active,
+.btn_dashboard-tray-network-inactive,
+.btn_dashboard-tray-bluetooth-active,
+.btn_dashboard-tray-bluetooth-inactive,
+.btn_dashboard-tray-notification-active,
+.btn_dashboard-tray-notification-inactive,
+.btn_dashboard-tray-audio-active,
+.btn_dashboard-tray-audio-inactive {
+	border-radius: 10px;
+}
+.btn_dashboard-tray-network-active,
+.btn_dashboard-tray-network-inactive {
+	font-size: 50px;
+}
+.btn_dashboard-tray-bluetooth-active,
+.btn_dashboard-tray-bluetooth-inactive {
+	font-size: 60px;
+}
+.btn_dashboard-tray-notification-active,
+.btn_dashboard-tray-notification-inactive {
+	font-size: 45px;
+}
+.btn_dashboard-tray-audio-active,
+.btn_dashboard-tray-audio-inactive {
+	font-size: 50px;
+}
+.btn_dashboard-tray-network-active,
+.btn_dashboard-tray-bluetooth-active,
+.btn_dashboard-tray-notification-active,
+.btn_dashboard-tray-audio-active {
+	color: $base;
+	background-color: $blue;
+}
+.btn_dashboard-tray-network-inactive,
+.btn_dashboard-tray-bluetooth-inactive,
+.btn_dashboard-tray-notification-inactive,
+.btn_dashboard-tray-audio-inactive {
+	color: $text;
+	background-color: $base2;
+}
+
+// Sysinfo
+.box_dashboard-sysinfo {
+	background-color: $base;
+	padding: 10px 10px 0;
+	border-radius: 10px;
+	box-shadow: 0 0 4px 1px $shadow2;
+}
+.lbl-title_dashboard-sysinfo {
+	background-color: $base2;
+	padding: 3px 50px;
+	border-radius: 10px;
+}
+.dashboard-sysinfo-logo {
+	font-size: 40px;
+	color: $teal;
+	font-weight: bold;
+}
+.dashboard-sysinfo-distro {
+	font-size: 20px;
+	color: $text;
+	font-weight: bold;
+}
+.lbl_dashboard-sysinfo-desktop-sep,
+.lbl_dashboard-sysinfo-kernel-sep,
+.lbl_dashboard-sysinfo-package-sep,
+.lbl_dashboard-sysinfo-resolution-sep,
+.lbl_dashboard-sysinfo-model-sep,
+.lbl_dashboard-sysinfo-cpu-sep {
+	font-size: 40px;
+	margin: -13px 0;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.lbl_dashboard-sysinfo-desktop-sep {
+	color: $blue;
+}
+.lbl_dashboard-sysinfo-kernel-sep {
+	color: $red;
+}
+.lbl_dashboard-sysinfo-package-sep {
+	color: $green;
+}
+.lbl_dashboard-sysinfo-resolution-sep {
+	color: $magenta;
+}
+.lbl_dashboard-sysinfo-model-sep {
+	color: $teal;
+}
+.lbl_dashboard-sysinfo-cpu-sep {
+	color: $yellow;
+}
+.dashboard-sysinfo-desktop,
+.dashboard-sysinfo-kernel,
+.dashboard-sysinfo-package,
+.dashboard-sysinfo-resolution,
+.dashboard-sysinfo-model,
+.dashboard-sysinfo-cpu {
+	color: $text2;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+// Sysbtn
+.box_dashboard-sysbtn {
+	background-color: $base;
+	border-radius: 10px;
+	box-shadow: 0 0 4px 1px $shadow2;
+}
+.btn_dashboard-sysbtn-lock,
+.btn_dashboard-sysbtn-logout,
+.btn_dashboard-sysbtn-reboot,
+.btn_dashboard-sysbtn-poweroff {
+	font-size: 40px;
+	padding: 0 20px;
+}
+.btn_dashboard-sysbtn-lock {
+	color: $magenta;
+}
+.btn_dashboard-sysbtn-logout {
+	color: $blue;
+}
+.btn_dashboard-sysbtn-reboot {
+	color: $green;
+}
+.btn_dashboard-sysbtn-poweroff {
+	color: $red;
+}

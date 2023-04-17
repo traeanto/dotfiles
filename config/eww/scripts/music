@@ -1,0 +1,64 @@
+#!/usr/bin/bash
+
+get_cover() {
+	TITLE="$(mpc current -f %title%)"
+	ARTIST="$(mpc current -f %artist%)"
+	MPDALBUMART="/tmp/album_art"
+	COVER="$MPDALBUMART/$ARTIST-$TITLE-cover.jpg"
+	ICON="$HOME/.local/share/icons/status/music.svg"
+
+	if [ -f "$COVER" ];then
+		echo "$COVER"
+	else
+		echo "$ICON"
+	fi
+}
+
+get_title() {
+	TITLE="$(mpc current -f %title%)"
+	ARTIST="$(mpc current -f %artist%)"
+	if [ -z "$TITLE" ]; then
+		echo "Offline"
+	else
+		echo "$TITLE"
+	fi
+}
+
+get_artist() {
+	TITLE="$(mpc current -f %title%)"
+	ARTIST="$(mpc current -f %artist%)"
+	if [ -z "$ARTIST" ]; then
+		echo "Offline"
+	else
+		echo "$ARTIST"
+	fi
+}
+
+get_status() {
+	STATUS="$(mpc status '%percenttime%' | tr -d ' %')"
+	echo "$STATUS"
+}
+
+icon_toggle() {
+	STATUS="$(mpc status '%state%')"
+	if [ "$STATUS" == "playing" ]; then
+		ICON="󰏥"
+    else
+		ICON="󰐌"
+	fi
+
+	echo $ICON
+}
+
+case "$1" in
+	"cover") get_cover
+	;;
+	"title") get_title
+	;;
+	"artist") get_artist
+	;;
+	"status") get_status
+    ;;
+	"ticon") icon_toggle
+    ;;
+esac

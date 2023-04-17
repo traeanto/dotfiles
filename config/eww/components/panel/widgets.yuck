@@ -1,0 +1,149 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Widget Sections
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Dashboard
+(defwidget panel-dashboard []
+	(box	:class "box_panel-dashboard"
+		(eventbox	:class "panel-dashboard"
+					:cursor "pointer"
+			(button	:class "btn_panel-dashboard"
+					:onclick "eww open --toggle dashboard" ""))))
+
+; Launcher
+(defwidget panel-launcher []
+	(box	:class "box_apps"
+		(eventbox	:class "panel-launcher"
+					:cursor "pointer"
+			(button	:class "btn_panel-launcher"
+					:onclick "${launcher}" "󰑣"))))
+
+; Clipboard
+(defwidget panel-clipboard []
+	(box	:class "box_apps"
+		(eventbox	:class "panel-clipboard"
+					:cursor "pointer"
+			(button	:class "btn_panel-clipboard"
+					:onclick "eww open --toggle clipboard" ""))))
+
+; Music
+(defwidget panel-music []
+	(box	:class "box_apps"
+		(eventbox	:class "panel-music"
+					:cursor "pointer"
+			(button	:class "btn_panel-music"
+					:onclick "${music} &" "󰎆"))))
+
+; Process viewer
+(defwidget panel-pviewer []
+	(box	:class "box_apps"
+		(eventbox	:class "panel-pviewer"
+					:cursor "pointer"
+            (button :class "btn_panel-pviewer"
+                    :onclick "kitty htop &" ""))))
+
+; Screencast
+(defwidget panel-screencast []
+	(box	:class "box_apps"
+		(eventbox	:class "panel-screencast"
+					:cursor "pointer"
+			(button	:class "btn_panel-screencast"
+					:onclick "eww open-many screencast-closer screencast" ""))))
+
+; Theme switch
+(defwidget panel-tswitch []
+	(box	:class "box_apps"
+		(eventbox	:class "panel-tswitch"
+					:cursor "pointer"
+			(button :class "btn_panel-tswitch"
+                    :onclick "eww open-many tswitch-question-closer tswitch-question" ""))))
+
+; Workspace
+(defwidget panel-workspace []
+	(literal	:content workspace))
+(deflisten workspace "$HOME/.config/eww/scripts/workspace")
+
+; Tray
+(defwidget panel-tray []
+	(box	:class "panel-tray"
+			:orientation "v"
+			:space-evenly "false"
+(panel-tray-brightness)(panel-tray-volume)(panel-tray-network)(panel-tray-battery)))
+
+; Brightness control
+(defwidget panel-tray-brightness []
+	(eventbox	:onhover "eww update panel-tray-brightness=true"
+				:onhoverlost "eww update panel-tray-brightness=false"
+		(box	:orientation "v"
+				:space-evenly "false"
+			(revealer	:transition "slideup"
+						:reveal panel-tray-brightness
+						:duration "550ms"
+				(scale	:class "bar_panel-tray-brightness"
+						:value current-brightness
+						:orientation "v"
+						:flipped true
+						:max 101
+						:min 0
+						:onchange "brightnessctl set {}%"))
+			(button	:onclick "echo hi"
+					:class "btn_panel-tray-brightness" ""))))
+(defvar panel-tray-brightness false)
+
+; Volume control
+(defwidget panel-tray-volume []
+	(eventbox	:onhover "eww update panel-tray-volume=true"
+				:onhoverlost "eww update panel-tray-volume=false"
+		(box	:orientation "v"
+				:space-evenly "false"
+			(revealer	:reveal panel-tray-volume
+						:transition "slideup"
+						:duration "550ms"
+				(scale	:class "bar_panel-tray-volume"
+						:value current-volume
+						:orientation "v"
+						:flipped true
+						:max 101
+						:min 0
+						:onchange "wpctl set-volume @DEFAULT_SINK@ {}%"))
+		(button	:class "btn_panel-tray-volume"
+				:onclick "echo hi"  ""))))
+(defvar panel-tray-volume false)
+
+; Network
+(defwidget panel-tray-network []
+	(button	:class "btn_panel-tray-network"
+			:onclick "${network-tray-popup}" network-icon))
+(defvar network-tray-popup "$HOME/.config/eww/scripts/popup network")
+
+; Battery
+(defwidget panel-tray-battery []
+	(button	:class "btn_panel-tray-battery"
+			:onclick "${battery-tray-popup}" battery-icon))
+(defvar battery-tray-popup "$HOME/.config/eww/scripts/popup battery")
+
+; Clock
+(defwidget panel-clock []
+	(button	:onclick "eww open --toggle calendar"
+		(box	:class "panel-clock"
+				:orientation "v"
+			(label	:text time-hour)
+			(label	:text time-min))))
+
+; Panel
+(defwidget panel []
+	(box	:class "box_panel" 
+			:orientation "v"
+			:space-evenly "false"
+(panel-top)(panel-bottom)))
+(defwidget panel-top []
+	(box	:orientation "v"
+			:space-evenly "false"
+			:valign "start"
+(panel-dashboard)(panel-launcher)(panel-clipboard)(panel-music)(panel-pviewer)(panel-screencast)(panel-tswitch)))
+(defwidget panel-bottom []
+	(box	:orientation "v"
+			:space-evenly "false"
+			:valign "end"
+			:vexpand "true"
+(panel-workspace)(panel-tray)(panel-clock)))

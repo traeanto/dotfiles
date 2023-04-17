@@ -1,0 +1,291 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Widget Sections
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Dashboard
+(defwidget dashboard []
+	(eventbox	:class "dashboard"
+				:onrightclick "eww close dashboard"
+		(box	:class "box_dashboard"
+				:valign "center"
+				:halign "center"
+				:orientation "v"
+				:space-evenly "false"
+(grid0))))
+
+; Profile
+(defwidget dashboard-profile []
+	(box	:class "box_dashboard-profile"
+			:orientation "v"
+			:vexpand "true"
+			:space-evenly "false"
+		(box	:class "dashboard-profile-face"
+				:style "background-image: url('${profile-face}');")
+		(label	:class "dashboard-profile-name"
+				:text profile-name)
+		(label	:class "dashboard-profile-username"
+				:text profile-username)))
+
+; System
+(defwidget dashboard-system []
+	(box	:class "box_dashboard-system"
+			:orientation "v"
+			:spacing 20
+		(box	:orientation "h"
+			(box	:class "box_dashboard-system-cpu"
+				(circular-progress	:class "bar_dashboard-system-cpu"
+									:value cpu-usage
+									:thickness 12
+									:start-at "75"
+					(label	:class "icon_dashboard-system-cpu"
+							:text "")))
+			(box	:class "box_dashboard-system-mem"
+				(circular-progress	:class "bar_dashboard-system-mem"
+									:value mem-usage
+									:thickness 12
+									:start-at "75"
+					(label	:class "icon_dashboard-system-mem"
+							:text ""))))
+		(box	:orientation "h"
+			(box	:class "box_dashboard-system-temp"
+				(circular-progress	:class "bar_dashboard-system-temp"
+									:value temperature
+									:thickness 12
+									:start-at "75"
+					(label	:class "icon_dashboard-system-temp"
+							:text "󰈐")))
+			(box	:class "box_dashboard-system-disk"
+				(circular-progress	:class "bar_dashboard-system-disk"
+									:value disk-capacity
+									:thickness 12
+									:start-at "75"
+					(label	:class "icon_dashboard-system-disk"
+							:text "󱛟"))))))
+
+; Clock
+(defwidget dashboard-clock []
+	(box	:class "box_dashboard-clock"
+			:orientation "h"
+			:space-evenly "true"
+		(label	:class "dashboard-clock-hour"
+				:text time-hour)
+		(label	:class "dashboard-clock-sep"
+				:text ":")
+		(label	:class "dashboard-clock-min"
+				:text time-min)))
+
+; Date
+(defwidget dashboard-date []
+	(box	:class "box_dashboard-date"
+			:orientation "v"
+		(label	:class "dashboard-date-dayname"
+				:text date-dayname)
+		(box	:orientation "h"
+				:space-evenly "false"
+				:spacing 10
+				:halign "center"
+			(label	:class "dashboard-date-day"
+					:text date-day)
+			(label	:class "dashboard-date-month"
+					:text date-month)
+			(label	:class "dashboard-date-year"
+					:text date-year))))
+
+; Weather
+(defwidget dashboard-weather []
+	(box	:class "box_dashboard-weather"
+			:orientation "v"
+			:vexpand "true"
+			:hexpand "true"
+		(box	:orientation "h"
+			(label	:class "dashboard-weather-icon"
+					:xalign 0
+					:text weather-icon)
+			(label	:class "dashboard-weather-temp"
+					:xalign 1
+					:text weather-temp))
+		(box	:orientation "v"
+			(label	:class "dashboard-weather-stat"
+					:text weather-stat)
+			(label	:class "dashboard-weather-quote"
+					:xalign 0
+					:text weather-quote))))
+
+; Music
+(defwidget dashboard-music []
+	(box	:class "box_dashboard-music"
+			:orientation "h"
+			:space-evenly "false"
+		(box	:class "dashboard-music-cover"
+				:style "background-image: url('${music-cover}');")
+		(box	:orientation "v"
+				:space-evenly "false"
+			(label	:class "dashboard-music-title"
+					:limit-width 12
+					:text music-title)
+			(label	:class "dashboard-music-artist"
+					:limit-width 12
+					:text music-artist)
+			(box	:orientation "h"
+					:vexpand "true"
+					:halign "center"
+					:spacing 10
+					:space-evenly "false"
+				(eventbox	:class "btn_dashboard-music-prev"
+							:cursor "pointer"
+							:onclick "mpc prev" "玲")
+				(eventbox	:class "btn_dashboard-music-toggle"
+							:cursor "pointer"
+							:onclick "mpc toggle" music-toggle-icon)
+				(eventbox	:class "btn_dashboard-music-next"
+							:cursor "pointer"
+							:onclick "mpc next" "怜"))
+			(scale	:class "bar_dashboard-music"
+					:value music-status
+					:max 101	:min 0
+					:onchange "mpc seek {}%"))))
+
+; Tray
+(defwidget dashboard-tray []
+	(box	:class "box_dashboard-tray"
+			:orientation "h"
+			:vexpand "true"
+			:spacing 10
+		(eventbox	:cursor "pointer"
+			(button	:class "btn_dashboard-tray-${network-status-class}"
+					:onclick "${network-toggle}" network-status-icon))
+		(eventbox	:cursor "pointer"
+			(button	:class "btn_dashboard-tray-${bluetooth-status-class}"
+					:onclick "${bluetooth-toggle}" bluetooth-status-icon))
+		(eventbox	:cursor "pointer"
+			(button	:class "btn_dashboard-tray-${notification-status-class}"
+					:onclick "${notification-toggle}" notification-status-icon))
+		(eventbox	:cursor "pointer"
+			(button	:class "btn_dashboard-tray-${audio-status-class}"
+					:onclick "${audio-toggle}" audio-status-icon))))
+
+; Sysinfo
+(defwidget dashboard-sysinfo []
+	(box	:class "box_dashboard-sysinfo"
+			:orientation "v"
+			:vexpand "true"
+			:space-evenly "false"
+		(box	:class "lbl-title_dashboard-sysinfo"
+				:orientation "h"
+				:spacing 10
+				:space-evenly "false"
+			(label	:class "dashboard-sysinfo-logo"
+					:text distro-logo)
+			(label	:class "dashboard-sysinfo-distro"
+					:text distro-name))
+		(box	:class "lbl_dashboard-sysinfo"
+				:orientation "v"
+				:valign "center"
+				:vexpand "true"
+			(box	:orientation "h"
+					:space-evenly "false"
+				(label	:class "lbl_dashboard-sysinfo-desktop-sep"
+						:text "")
+				(label	:class "dashboard-sysinfo-desktop"
+						:text distro-desktop))
+			(box	:orientation "h"
+					:space-evenly "false"
+				(label	:class "lbl_dashboard-sysinfo-kernel-sep"
+						:text "")
+				(label	:class "dashboard-sysinfo-kernel"
+						:text distro-kernel))
+			(box	:orientation "h"
+					:space-evenly "false"
+				(label	:class "lbl_dashboard-sysinfo-package-sep"
+						:text "")
+				(label	:class "dashboard-sysinfo-package"
+						:text distro-package))
+			(box	:orientation "h"
+					:space-evenly "false"
+				(label	:class "lbl_dashboard-sysinfo-resolution-sep"
+						:text "")
+				(label	:class "dashboard-sysinfo-resolution"
+						:text system-resolution))
+			(box	:orientation "h"
+					:space-evenly "false"
+				(label	:class "lbl_dashboard-sysinfo-model-sep"
+						:text "")
+				(label	:class "dashboard-sysinfo-model"
+						:text system-model))
+			(box	:orientation "h"
+					:space-evenly "false"
+				(label	:class "lbl_dashboard-sysinfo-cpu-sep"
+						:text "")
+				(label	:class "dashboard-sysinfo-cpu"
+						:text system-cpu)))))
+
+; Sysbtn
+(defwidget dashboard-sysbtn []
+	(box	:orientation "v"
+			:spacing 10
+		(box	:class "box_dashboard-sysbtn"
+			(eventbox	:cursor "pointer"
+				(button	:class "btn_dashboard-sysbtn-lock"
+						:onclick "echo hi" "")))
+		(box	:class "box_dashboard-sysbtn"
+			(eventbox	:cursor "pointer"
+				(button	:class "btn_dashboard-sysbtn-logout"
+						:onclick "eww close dashboard && eww open-many logout-question-closer logout-question" "﫼")))
+		(box	:class "box_dashboard-sysbtn"
+			(eventbox	:cursor "pointer"
+				(button	:class "btn_dashboard-sysbtn-reboot"
+						:onclick "eww close dashboard && eww open-many reboot-question-closer reboot-question" "")))
+		(box	:class "box_dashboard-sysbtn"
+			(eventbox	:cursor "pointer"
+				(button	:class "btn_dashboard-sysbtn-poweroff"
+						:onclick "eww close dashboard && eww open-many poweroff-question-closer poweroff-question" "襤")))))
+
+; Grid
+(defwidget grid0 []
+	(box	:orientation "h"
+			:spacing 10
+			:space-evenly "false"
+(grid01)(grid02)))
+(defwidget grid01 []
+	(box	:orientation "v"
+			:spacing 10
+			:vexpand "true"
+			:space-evenly "false"
+(dashboard-profile)(dashboard-system)))
+(defwidget grid02 []
+	(box	:orientation "v"
+			:spacing 10
+			:space-evenly "false"
+(grid021)(grid022)))
+(defwidget grid021 []
+	(box	:orientation "h"
+			:spacing 10
+			:space-evenly "false"
+(grid0211)(grid0212)))
+(defwidget grid0211 []
+	(box	:orientation "v"
+			:spacing 10
+			:space-evenly "false"
+(dashboard-clock)(dashboard-date)))
+(defwidget grid0212 []
+	(box	:orientation "v"
+			:spacing 10
+			:hexpand "true"
+			:space-evenly "false"
+(dashboard-weather)))
+(defwidget grid022 []
+	(box	:orientation "h"
+			:spacing 10
+			:space-evenly "false"
+(grid0221)(grid0222)))
+(defwidget grid0221 []
+	(box	:orientation "v"
+			:spacing 10
+			:space-evenly "false"
+(dashboard-music)(dashboard-tray)))
+(defwidget grid0222 []
+	(box	:orientation "h"
+			:spacing 10
+			:vexpand "true"
+			:space-evenly "false"
+(dashboard-sysinfo)(dashboard-sysbtn)))

@@ -1,0 +1,47 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Widget Sections
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Network
+(defwidget network-window []
+	(box	:class "box_network-window"
+			:orientation "v"
+			:space-evenly "false"
+		(box	:class "lbl_network-window"
+				:orientation "h"
+			(label	:class "lbl-title_network-window"
+					:text "Network"
+					:halign "start"))
+(network-window-list)(network-window-toggler)))
+
+; Toggler
+(defwidget network-window-toggler []
+	(box	:class "box_network-window-toggler"
+			:orientation "h"
+			:space-evenly "false"
+		(label	:width "180"
+				:text network-status
+				:xalign "0")
+		(button	:class "btn_network-window-toggler"
+				:hexpand "true"
+				:halign "end"
+				:onclick "${network-toggle}" network-toggle-icon)))
+
+; List SSID
+(defwidget network-window-list []
+	(literal	:content network-window-list))
+(deflisten network-window-list "$HOME/.config/eww/scripts/network list")
+
+; Network - input
+(defwidget network-window-input []
+	(box	:class "box_network-window-input"
+			:orientation "v"
+			:space-evenly "false"
+			:spacing 10
+		(label	:class "lbl-title_network-window-input"
+				:text "Connecting"
+				:xalign 0.5)
+		(label	:text network-window-input-ssid :xalign 0)
+		(input	:password "true"
+				:onaccept "$HOME/.config/eww/scripts/network connecting '{}' &")))
+(defpoll network-window-input-ssid :interval "1s" "$HOME/.config/eww/scripts/network getssid")

@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
-# Indicator
-CURRENT_THEME="kuroneko" # keep on line 4
+# Indicator keep on line 4
+CURRENT_THEME="kuroneko"
 SCRIPTFILE="$HOME/.config/eww/scripts/toggle-themes"
 
 EWW_BAR="$HOME/.config/eww/eww.scss"

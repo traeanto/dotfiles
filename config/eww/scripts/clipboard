@@ -21,11 +21,11 @@ list() {
 	while read -r i; do
 		(( nu++ ))
 		[[ "$i" == *'"'* ]] && q="'" || q='"'
-		[[ "${#i}" -gt 48 ]] && l="${i::48}" && l+="..." || l=$i
 		LISTLINKS+=("(button :onclick $q""wl-copy \\$q$i\\$q$q \
 							 :onrightclick \"sed -i $nu""d $FILENAME\" \
 							 :class \"clip-links\" \
-							 :halign \"start\" $q$l$q)")
+							 :halign \"start\" \
+					    	 (label :text $q$i$q :limit-width \"48\"))")
 	done < $FILENAME
 	
     echo "(${LISTLINKS[*]})"

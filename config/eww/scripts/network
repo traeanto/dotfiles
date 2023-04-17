@@ -1,0 +1,169 @@
+#!/usr/bin/bash
+
+CACHE_DIR="$HOME/.cache/eww/network"
+[[ -d "$CACHE_DIR" ]] || mkdir -p  "$CACHE_DIR"
+
+index() {
+	STATUS="$(nmcli networking)"
+
+	WRSTATUS="$(nmcli device status | grep ' wifi ' | awk '{print $3}')"
+	[[ "$WRSTATUS" == "connected" ]] && WRNAME="$(nmcli -t -f active,ssid dev wifi | awk -F  ':' '/^yes/ {print $2}')"
+	[[ -z "$WRNAME" ]] || SIGNAL="$(nmcli device wifi | grep "$WRNAME" | sed -e "s|$WRNAME||" | awk '{print $7}')"
+}
+
+get_icon() {
+	index
+	[[ "$STATUS" == "disabled" || -z "$SIGNAL" ]] && echo "󰤭" && exit
+	if [ "$SIGNAL" -gt "80" ]; then
+		icon="󰤨"
+	elif [ "$SIGNAL" -gt "50" ]; then
+		icon="󰤥"
+	elif [ "$SIGNAL" -gt "30" ]; then
+		icon="󰤢"
+	elif [ "$SIGNAL" -gt "10" ]; then
+		icon="󰤟"
+	elif [ "$SIGNAL" -gt "0" ]; then
+		icon="󰤯"
+	fi
+	echo "$icon"
+}
+
+get_status() {
+	STATUS="$(nmcli networking)"
+	if [ "$STATUS" == "disabled" ]; then
+		CURRENT_STATUS="Currently off"
+	elif [ "$STATUS" == "enabled" ]; then
+		CURRENT_STATUS="Currently on"
+	fi
+	echo "$CURRENT_STATUS"
+}
+
+get_status_icon() {
+	STATUS="$(nmcli networking)"
+	if [ "$STATUS" == "disabled" ]; then
+		CURRENT_BUTTON="睊"
+		CLASS="network-inactive"
+	elif [ "$STATUS" == "enabled" ]; then
+		CURRENT_BUTTON="直"
+		CLASS="network-active"
+	fi
+	echo $CURRENT_BUTTON
+	echo $CLASS
+}
+
+toggle() {
+	STATUS="$(nmcli networking)"
+	if [ "$STATUS" == "disabled" ]; then
+		nmcli networking on
+    elif [ "$STATUS" == "enabled" ]; then
+	    nmcli networking off
+	fi
+}
+
+get_toggle_icon() {
+	STATUS="$(nmcli networking)"
+	if [ "$STATUS" == "disabled" ]; then
+		CURRENT_BUTTON="󰔢"
+    elif [ "$STATUS" == "enabled" ]; then
+		CURRENT_BUTTON="󰔡"
+	fi
+	echo "$CURRENT_BUTTON"
+}
+
+listssid() {
+	STATUS="$(nmcli networking)"
+	if [ "$STATUS" == "disabled" ]; then
+		LISTSSID="label :text \"No device abailable\" :xalign 0"
+	else
+		LISTSSID=("box :orientation \"v\" :space-evenly \"false\"")
+		while read -r i; do
+			l="$(echo $i | awk -F  ':' '{print $4}')"
+			if [ -z "$l" ]; then
+				l=""
+			else
+				l=""
+			fi
+
+			b="$(echo $i | awk -F  ':' '{print $2}')"
+			if [ "$b" -gt "80" ]; then
+				b="󰤨"
+			elif [ "$b" -gt "50" ]; then
+				b="󰤥"
+			elif [ "$b" -gt "30" ]; then
+				b="󰤢"
+			elif [ "$b" -gt "10" ]; then
+				b="󰤟"
+			elif [ "$b" -gt "0" ]; then
+				b="󰤯"
+		    fi
+
+			c="$(echo $i | awk -F  ':' '{print $3}' | sed -e 's|*||')"
+			
+			s="$(echo $i | awk -F  ':' '{print $1}')"
+			LISTSSID+=("(button :class \"network-window-list-item\" :onclick \"$HOME/.config/eww/scripts/network inputssid '$s' &\" \
+						    (box :orientation \"h\" :space-evenly \"false\" \
+								 (label :class \"lock_network-window-list\" :text \"$l\") \
+								 (label :class \"bar_network-window-list\" :text \"$b\") \
+								 (label :text \"$s\" :limit-width \"15\" :hexpand \"true\" :xalign 0) \
+								 (label :class \"use_network-window-list\" :text \"$c\")))")
+		done <<< "$(nmcli -t -f ssid,signal,in-use,security dev wifi | sort -n)"
+	fi
+	echo "(${LISTSSID[*]})"
+}
+
+listing() {
+	while true; do
+	    listssid
+		sleep 1
+	done
+}
+
+inputssid() {
+	FILENAME="$CACHE_DIR/ssid"
+	[[ -n "$FILENAME" ]] && rm $FILENAME
+	echo $@ >> $FILENAME
+
+	INPUTSSID="$(cat $FILENAME)"
+	nmcli dev wifi connect "$INPUTSSID" && \
+		notify-send "Connecting to $INPUTSSID" -h string:synchronous:network || \
+	eww open network-window-input
+}
+
+connecting() {
+	FILENAME="$CACHE_DIR/ssid"
+	INPUTSSID="$(cat $FILENAME)"
+	nmcli dev wifi connect "$INPUTSSID" password "$@" && \
+	    notify-send "Connecting to $INPUTSSID" -h string:synchronous:network || \
+		    notify-send "Connecting to $INPUTSSID FAILED" -h string:synchronous:network
+	eww close network-window-input
+	rm $FILENAME
+}
+
+getssid () {
+	FILENAME="$CACHE_DIR/ssid"
+    SSID="$(cat $FILENAME)"
+	echo "$SSID"
+}
+
+case "$1" in
+	"icon") get_icon
+	;;
+	"status") get_status
+	;;
+	"status_icon") get_status_icon | head -n1
+	;;
+	"status_class") get_status_icon | tail -n1
+	;;
+	"toggle") toggle
+	;;
+	"toggle_icon") get_toggle_icon
+	;;
+	"list") listing
+	;;
+	"inputssid") inputssid $2
+	;;
+	"connecting") connecting $2
+	;;
+	"getssid") getssid
+    ;;
+esac

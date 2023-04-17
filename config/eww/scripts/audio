@@ -1,0 +1,27 @@
+#!/usr/bin/bash
+
+get_status_icon() {
+	STATUS="$(pactl get-sink-mute @DEFAULT_SINK@ | awk -F ': ' '{print $2}')"
+	if [ "$STATUS" == "yes" ]; then
+		CURRENT_BUTTON="婢"
+		CLASS="audio-inactive"
+	elif [ "$STATUS" == "no" ]; then
+		CURRENT_BUTTON="墳"
+		CLASS="audio-active"
+	fi
+	echo $CURRENT_BUTTON
+	echo $CLASS
+}
+
+toggle() {
+	pactl set-sink-mute @DEFAULT_SINK@ toggle
+}
+
+case "$1" in
+	"status_icon") get_status_icon | head -n1
+	;;
+	"status_class") get_status_icon | tail -n1
+	;;
+	"toggle") toggle
+	;;
+esac

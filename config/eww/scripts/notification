@@ -1,0 +1,32 @@
+#!/usr/bin/bash
+
+get_status_icon() {
+	STATUS="$(pgrep dunst)"
+	if [ -z "$STATUS" ]; then
+		CURRENT_BUTTON=""
+		CLASS="notification-inactive"
+	elif [ -n "$STATUS" ]; then
+		CURRENT_BUTTON=""
+		CLASS="notification-active"
+	fi
+	echo $CURRENT_BUTTON
+	echo $CLASS
+}
+
+toggle() {
+	STATUS="$(pgrep dunst)"
+	if [ -z "$STATUS" ]; then
+		dunst &!
+	elif [ -n "$STATUS" ]; then
+		kill "$STATUS"
+	fi
+}
+
+case "$1" in
+	"status_icon") get_status_icon | head -n1
+	;;
+	"status_class") get_status_icon | tail -n1
+	;;
+	"toggle") toggle
+	;;
+esac

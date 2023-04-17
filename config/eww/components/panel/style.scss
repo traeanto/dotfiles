@@ -1,0 +1,195 @@
+// Global
+* {
+	all: unset;
+}
+
+// Panel
+.box_panel {
+	font-family: $font2;
+	background-color: $base;
+	padding-bottom: 5px;
+	margin: 10px;
+	box-shadow: 0 0 5px 1px $shadow;
+	border-radius: 10px;
+}
+
+// Dashboard
+.box_panel-dashboard {
+	margin-bottom: 6px;
+}
+.panel-dashboard {
+	background-color: $base;
+	border-radius: 10px	10px 0 0;
+}
+.btn_panel-dashboard {
+	color: $base;
+	font-size: 35px;
+	padding: 5px 5px 7px;
+	background-image: $special;
+	border-radius: 10px;
+}
+
+// App section
+.box_apps {
+	margin: 0 6px 6px;
+	border-radius: 0 0 15px 15px;
+}
+
+// Launcher
+.panel-launcher {
+	background-color: $base2;
+	border-radius: 7px;
+}
+.btn_panel-launcher {
+	font-size: 25px;
+	color: $blue;
+}
+
+// Clipboard
+.panel-clipboard {
+	background-color: $base2;
+	border-radius: 7px;
+}
+.btn_panel-clipboard {
+	font-size: 20px;
+	color: $magenta;
+	margin-left: -6px;
+	padding: 3px 0;
+}
+
+// Music
+.panel-music {
+	background-color: $base2;
+	border-radius: 7px;
+}
+.btn_panel-music {
+	font-size: 25px;
+	color: $teal;
+	margin-left: -3px;
+	padding: 0;
+}
+
+// Pviewer
+.panel-pviewer {
+	background-color: $base2;
+	border-radius: 7px;
+}
+.btn_panel-pviewer {
+	font-size: 25px;
+	color: $sky;
+	margin-left: 0;
+	padding: 4px;
+}
+
+// Screencast
+.panel-screencast {
+	background-color: $base2;
+	border-radius: 7px;
+}
+.btn_panel-screencast {
+	font-family: $font1;
+	font-size: 25px;
+	color: $green;
+	padding: 5px;
+}
+
+// Theme switch
+.panel-tswitch {
+	background-color: $base2;
+	border-radius: 7px;
+}
+.btn_panel-tswitch {
+	font-family: $font1;
+	font-size: 25px;
+	color: $yellow;
+	padding: 5px;
+}
+
+// Workspace
+.panel-workspace {
+	padding: 0 18px;
+	font-size: 7px;
+	margin-bottom: 10px;
+}
+
+.0 {
+	background-color: $base3;
+	border-radius: 100%;
+}
+.01,.02,.03,.4,.5,.6,.7,.8,.9,.10 {
+	background-color: $blue;
+	border-radius: 100%;
+}
+.011,.022,.033,.44,.55,.66,.77,.88,.99,.1010 {
+	background-color: $red;
+	border-radius: 100%;
+}
+
+// Tray
+.panel-tray {
+	background-color: $base2;
+	border-radius: 25px;
+	margin: 0 7px;
+	padding: 10px 0 5px;
+}
+
+// Brightness
+.btn_panel-tray-brightness {
+	color: $orange;
+	font-size: 21px;
+}
+.bar_panel-tray-brightness trough {
+	all: unset;
+	background-color: $base3;
+	border-radius: 5px;
+	min-height: 60px;
+	min-width: 7px;
+	margin: 10px 0 5px;
+}
+.bar_panel-tray-brightness trough highlight {
+	background-color: $yellow;
+	border-radius: 5px;
+}
+
+// Volume
+.btn_panel-tray-volume {
+	color: $blue;
+	font-size: 21px;
+}
+.bar_panel-tray-volume trough {
+	all: unset;
+	background-color: $base3;
+	border-radius: 5px;
+	min-height: 60px;
+	min-width: 7px;
+	margin: 10px 0 5px;
+}
+.bar_panel-tray-volume trough highlight {
+	background-color: $sky;
+	border-radius: 5px;
+}
+
+// Network
+.btn_panel-tray-network {
+	font-size: 19px;
+	color: $magenta;
+	margin-top: -3px;
+	margin-left: -7px;
+}
+
+// Battery
+.btn_panel-tray-battery {
+	font-family: $font3;
+	font-size: 20px;
+	color: $green;
+	margin-top: -5px;
+}
+
+// Clock
+.panel-clock {
+	font-family: $font3;
+	font-weight: bold;
+	font-size: 22px;
+	color: $clock;
+	padding: 10px;
+}

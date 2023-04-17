@@ -1,0 +1,50 @@
+.box_network-window {
+	background-color: $base;
+	border-radius: 10px;
+	margin: 10px;
+	box-shadow: 0 0 4px 1px $shadow2;
+	padding: 20px;
+	color: $text;
+}
+
+.lbl-title_network-window {
+	color: $magenta;
+	font-weight: bold;
+	font-size: 20px;
+	margin-bottom:10px;
+}
+
+.btn_network-window-toggler {
+	color: $blue;
+	font-size: 50px;
+	margin: -50px 0;
+}
+
+.lock_network-window-list {
+	color: $yellow;
+	font-size: 20px;
+	margin: -20px 0;
+}
+
+.bar_network-window-list {
+	font-size: 30px;
+	margin: -30px 5px;
+}
+
+.use_network-window-list {
+	color: $green;
+}
+
+.box_network-window-input {
+	color: $text;
+	background-color: $base;
+	padding: 10px;
+	border-radius: 10px;
+	margin: 10px;
+	box-shadow: 0 0 4px 1px $shadow2;
+}
+
+.lbl-title_network-window-input {
+	font-weight: bold;
+	margin: 5px 0;
+}

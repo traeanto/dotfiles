@@ -8,12 +8,24 @@ STAT="$(pgrep 'wf-recorder')"
 indicator() {
 	if [ -z ${STAT} ];then
         ICON="󰑊"
-	    CLASS="label-indicator-n"
+	    CLASS="lbl_screencast-indicator-n"
 	else
         ICON="󰑋"
-		CLASS="label-indicator-a"
+		CLASS="lbl-screencast-indicator-a"
 	fi
     echo "(label :class \"$CLASS\" :text \"$ICON\")"
+}
+
+get_status_icon() {
+	if [ -z "${STAT}" ]; then
+		CURRENT_BUTTON="󰑊"
+		CLASS="screencast-inactive"
+    else
+		CURRENT_BUTTON="󰑋"
+		CLASS="screencast-active"
+	fi
+	echo $CURRENT_BUTTON
+	echo $CLASS
 }
 
 start () {
@@ -50,6 +62,10 @@ stop() {
 
 case "$1" in
 	"indicator") indicator
+	;;
+	"status_icon") get_status_icon | head -n1
+	;;
+	"status_class") get_status_icon | tail -n1
 	;;
 	"start") start
 	;;

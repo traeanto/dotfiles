@@ -1,0 +1,13 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Window Sections
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Dashboard
+(defwindow dashboard
+	:monitor 0
+	:geometry	(geometry	:height "100%"
+							:width "100%"
+							:anchor "center right")
+	:vexpand "false"
+	:hexpand "false"
+(dashboard))

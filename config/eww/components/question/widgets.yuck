@@ -4,15 +4,68 @@
 
 ; Theme Switch
 (defwidget tswitch-question []
-	(box   :class "question-container"
-		   :orientation "v"
-	(label :class "label-question"
-		   :text "Change current themes?")
-	(box   :orientation "h"
-		   (eventbox	:cursor "pointer"
-		   				(button	:class "button-question"
-								:onclick "${toggle-themes} && ${tswitch-close}" "Yes"))
-		   (eventbox	:cursor "pointer"
-		   				(button	:class "button-question"
-								:onclick "${tswitch-close}" "No")))))
-(defvar tswitch-close "eww close tswitch-question-closer tswitch-question")
+	(box	:class "box_question"
+			:orientation "v"
+			:space-evenly "false"
+		(label	:class "lbl_question"
+				:text "Change current themes?")
+		(box	:orientation "h"
+				:spacing 10
+			(eventbox	:cursor "pointer"
+		  		(button	:class "btn_question"
+						:onclick "${toggle-themes} && ${tswitch-question-close}" "Yes"))
+		  	(eventbox	:cursor "pointer"
+		  		(button	:class "btn_question"
+						:onclick "${tswitch-question-close}" "No")))))
+(defvar tswitch-question-close "eww close tswitch-question-closer tswitch-question")
+
+; Logout
+(defwidget logout-question []
+	(box	:class "box_question"
+			:orientation "v"
+			:space-evenly "false"
+		(label	:class "lbl_question"
+				:text "Logout system?")
+		(box	:orientation "h"
+				:spacing 10
+			(eventbox	:cursor "pointer"
+		  		(button	:class "btn_question"
+						:onclick "killall Hyprland" "Yes"))
+		  	(eventbox	:cursor "pointer"
+		  		(button	:class "btn_question"
+						:onclick "${logout-question-close}" "No")))))
+(defvar logout-question-close "eww close logout-question-closer logout-question")
+
+; Reboot
+(defwidget reboot-question []
+	(box	:class "box_question"
+			:orientation "v"
+			:space-evenly "false"
+		(label	:class "lbl_question"
+				:text "Reboot system?")
+		(box	:orientation "h"
+				:spacing 10
+			(eventbox	:cursor "pointer"
+		  		(button	:class "btn_question"
+						:onclick "sudo reboot" "Yes"))
+		  	(eventbox	:cursor "pointer"
+		  		(button	:class "btn_question"
+						:onclick "${reboot-question-close}" "No")))))
+(defvar reboot-question-close "eww close reboot-question-closer reboot-question")
+
+; Poweroff
+(defwidget poweroff-question []
+	(box	:class "box_question"
+			:orientation "v"
+			:space-evenly "false"
+		(label	:class "lbl_question"
+				:text "Shutdown system?")
+		(box	:orientation "h"
+				:spacing 10
+			(eventbox	:cursor "pointer"
+		  		(button	:class "btn_question"
+						:onclick "sudo poweroff" "Yes"))
+		  	(eventbox	:cursor "pointer"
+		  		(button	:class "btn_question"
+						:onclick "${poweroff-question-close}" "No")))))
+(defvar poweroff-question-close "eww close poweroff-question-closer poweroff-question")

@@ -1,0 +1,26 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Widget Sections
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defwidget battery-window []
+	(box	:class "box_battery-window"
+			:orientation "v"
+		(label	:class "lbl-title_battery-window"
+				:text "Battery"
+				:halign "start")
+		(box	:orientation "h"
+				:space-evenly "false"
+			(circular-progress	:class "bar_battery-window"
+								:value battery-capacity
+								:thickness 7
+				(label	:class "icon_battery-window"
+						:text ""))
+			(box	:class "lbl_battery-window"
+					:orientation "v"
+					:space-evenly "false"
+				(label	:text battery-status
+						:halign "start")
+				(label	:text battery-uptime
+						:halign "start")))))
+(defpoll battery-status :interval "1s" "$HOME/.config/eww/scripts/battery status")
+(defpoll battery-uptime :interval "1m" "$HOME/.config/eww/scripts/battery uptime")

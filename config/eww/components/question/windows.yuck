@@ -7,3 +7,21 @@
 	:monitor 0
 	:geometry	(geometry	:anchor "center")
 (tswitch-question))
+
+; Logout
+(defwindow logout-question
+	:monitor 0
+	:geometry	(geometry	:anchor "center")
+(logout-question))
+
+; Reboot
+(defwindow reboot-question
+	:monitor 0
+	:geometry	(geometry	:anchor "center")
+(reboot-question))
+
+; Poweroff
+(defwindow poweroff-question
+	:monitor 0
+	:geometry	(geometry	:anchor "center")
+(poweroff-question))

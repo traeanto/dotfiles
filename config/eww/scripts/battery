@@ -1,45 +1,58 @@
 #!/usr/bin/bash
 
-PERCEN="$(cat /sys/class/power_supply/BAT*/capacity)"
+CAPACITY="$(cat /sys/class/power_supply/BAT*/capacity)"
 STATUS="$(cat /sys/class/power_supply/BAT*/status)"
 
 icon() {
     [[ $STATUS == Charging ]] && echo "" && exit
-    if [ "$PERCEN" -gt "90" ]; then
+    if [ "$CAPACITY" -gt "90" ]; then
 	    icon=""
-    elif [ "$PERCEN" -gt "80" ]; then
+    elif [ "$CAPACITY" -gt "80" ]; then
 	    icon=""
-    elif [ "$PERCEN" -gt "70" ]; then
+    elif [ "$CAPACITY" -gt "70" ]; then
 	    icon=""
-    elif [ "$PERCEN" -gt "60" ]; then
+    elif [ "$CAPACITY" -gt "60" ]; then
 	    icon=""
-    elif [ "$PERCEN" -gt "50" ]; then
+    elif [ "$CAPACITY" -gt "50" ]; then
 	    icon=""
-    elif [ "$PERCEN" -gt "40" ]; then
+    elif [ "$CAPACITY" -gt "40" ]; then
 	    icon=""
-    elif [ "$PERCEN" -gt "30" ]; then
+    elif [ "$CAPACITY" -gt "30" ]; then
 	    icon=""
-    elif [ "$PERCEN" -gt "20" ]; then
+    elif [ "$CAPACITY" -gt "20" ]; then
 	    icon=""
-    elif [ "$PERCEN" -gt "10" ]; then
+    elif [ "$CAPACITY" -gt "10" ]; then
 	    icon=""
-	    notify-send -u critical "Battery Low" "Connect Charger"
-    elif [ "$PERCEN" -gt "0" ]; then
+    elif [ "$CAPACITY" -gt "0" ]; then
 	    icon=""
-	    notify-send -u critical "Battery Low" "Connect Charger"
+	    notify-send -u critical "Battery Low" "Connect Charger" -h string:synchronous:sys-battery
     else
         echo  && exit
     fi
     echo "$icon"
 }
 
-percent() {
-    echo $PERCEN
+capacity() {
+    echo "$CAPACITY"
+}
+
+status() {
+	[[ "$STATUS" == "Not charging" ]] && STATUS="Full"
+	echo "$CAPACITY% $STATUS"
+}
+
+uptimestatus() {
+	UPTIME="$(uptime -p | sed -e 's/hour/hr/' -e 's/hours/hrs/' -e 's/minutes/mins/' -e 's/minute/min/' -e 's/up //')"
+	echo "$UPTIME"
 }
 
 case "$1" in
 	"icon") icon
-    ;;
-    "percent") percent
-    ;;
+	;;
+	"capacity") capacity
+	;;
+	"status") status
+	;;
+	"uptime") uptimestatus
+	;;
 esac

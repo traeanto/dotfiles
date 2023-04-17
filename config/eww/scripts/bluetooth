@@ -1,0 +1,32 @@
+#!/usr/bin/bash
+
+get_status_icon() {
+	STATUS="$(bluetoothctl show | awk -F ': ' '/Powered/ { print $2 }')"
+	if [ "$STATUS" == "no" ]; then
+		CURRENT_BUTTON="󰂲"
+		CLASS="bluetooth-inactive"
+	elif [ "$STATUS" == "yes" ]; then
+		CURRENT_BUTTON="󰂯"
+		CLASS="bluetooth-active"
+	fi
+	echo $CURRENT_BUTTON
+	echo $CLASS
+}
+
+toggle() {
+	STATUS="$(bluetoothctl show | awk -F ': ' '/Powered/ { print $2 }')"
+	if [ "$STATUS" == "no" ]; then
+		bluetoothctl power on
+	elif [ "$STATUS" == "yes" ]; then
+		bluetoothctl power off
+	fi
+}
+
+case "$1" in
+	"status_icon") get_status_icon | head -n1
+	;;
+	"status_class") get_status_icon | tail -n1
+	;;
+	"toggle") toggle
+	;;
+esac

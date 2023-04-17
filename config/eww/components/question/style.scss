@@ -1,26 +1,22 @@
-.question-container {
+.box_question {
 	background-color: $base;
 	padding: 20px;
 	border-radius: 10px;
 	margin: 10px;
-	box-shadow: 0 0 4 1 $shadow2;
+	box-shadow: 0 0 4px 1px $shadow2;
 }
-
-.label-question {
+.lbl_question {
 	color: $text;
 	font-size: 18px;
-	margin: 0 5px 10px;
+	margin: 0 5px 15px;
 }
-
-.button-question {
+.btn_question {
 	color: $text;
 	background-color: $base2;
 	border-radius: 5px;
 	padding: 5px;
-	margin: 5px 5px 0;
 }
-
-.button-question:hover {
+.btn_question:hover {
 	color: $base;
 	background-color: $blue;
 }

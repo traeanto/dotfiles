@@ -1,0 +1,106 @@
+#!/usr/bin/bash
+
+APIKEY="yourapi"
+CITYID="cityid"
+
+# Collect data
+cache_dir="$HOME/.cache/eww/weather"
+cache_weather_stat="$cache_dir/weather-stat"
+cache_weather_degree="$cache_dir/weather-degree"
+cache_weather_quote="$cache_dir/weather-quote"
+cache_weather_icon="$cache_dir/weather-icon"
+
+[[ -d "$cache_dir" ]] || mkdir -p "$cache_dir"
+
+weather="$(curl -sf "http://api.openweathermap.org/data/2.5/weather?APPID=$APIKEY&id=$CITYID&units=metric")"
+if [ -n "$weather" ]; then
+	weather_temp="$(echo "$weather" | jq ".main.temp" | cut -d "." -f 1)"
+	weather_icon_code="$(echo "$weather" | jq -r ".weather[].icon" | head -1)"
+	weather_description="$(echo "$weather" | jq -r ".weather[].description" | head -1 | sed -e "s/\b\(.\)/\u\1/g")"
+	if [ "$weather_icon_code" == "50d"  ]; then
+		weather_icon=" "
+		weather_quote="Forecast says it's misty \nMake sure you don't get lost on your way..."
+	elif [ "$weather_icon_code" == "50n"  ]; then
+		weather_icon=" "
+		weather_quote="Forecast says it's a misty night \nDon't go anywhere tonight or you might get lost..."
+	elif [ "$weather_icon_code" == "01d"  ]; then
+		weather_icon=" "
+		weather_quote="It's a sunny day, gonna be fun! \nDon't go wandering all by yourself though..."
+	elif [ "$weather_icon_code" == "01n"  ]; then
+		weather_icon=" "
+		weather_quote="It's a clear night \nYou might want to take a evening stroll to relax..."
+	elif [ "$weather_icon_code" == "02d"  ]; then
+		weather_icon=" "
+		weather_quote="It's  cloudy, sort of gloomy \nYou'd better get a book to read..."
+	elif [ "$weather_icon_code" == "02n"  ]; then
+		weather_icon=" "
+		weather_quote="It's a cloudy night \nHow about some hot chocolate and a warm bed?"
+	elif [ "$weather_icon_code" == "03d"  ]; then
+		weather_icon=" "
+		weather_quote="It's  cloudy, sort of gloomy \nYou'd better get a book to read..."
+	elif [ "$weather_icon_code" == "03n"  ]; then
+		weather_icon=" "
+		weather_quote="It's a cloudy night \nHow about some hot chocolate and a warm bed?"
+	elif [ "$weather_icon_code" == "04d"  ]; then
+		weather_icon=" "
+		weather_quote="It's  cloudy, sort of gloomy \nYou'd better get a book to read..."
+	elif [ "$weather_icon_code" == "04n"  ]; then
+		weather_icon=" "
+		weather_quote="It's a cloudy night \nHow about some hot chocolate and a warm bed?"
+	elif [ "$weather_icon_code" == "09d"  ]; then
+		weather_icon=" "
+		weather_quote="It's rainy, it's a great day! \nGet some ramen and watch as the rain falls..."
+	elif [ "$weather_icon_code" == "09n"  ]; then
+		weather_icon=" "
+		weather_quote=" It's gonna rain tonight it seems \nMake sure your clothes aren't still outside..."
+	elif [ "$weather_icon_code" == "10d"  ]; then
+		weather_icon=" "
+		weather_quote="It's rainy, it's a great day! \nGet some ramen and watch as the rain falls..."
+	elif [ "$weather_icon_code" == "10n"  ]; then
+		weather_icon=" "
+		weather_quote="It's gonna rain tonight it seems \nMake sure your clothes aren't still outside..."
+	elif [ "$weather_icon_code" == "11d"  ]; then
+		weather_icon=""
+		weather_quote="There's storm for forecast today \nMake sure you don't get blown away..."
+	elif [ "$weather_icon_code" == "11n"  ]; then
+		weather_icon=""
+		weather_quote="There's gonna be storms tonight \nMake sure you're warm in bed and the windows are shut..."
+	elif [ "$weather_icon_code" == "13d"  ]; then
+		weather_icon=" "
+		weather_quote="It's gonna snow today \nYou'd better wear thick clothes and make a snowman as well!"
+	elif [ "$weather_icon_code" == "13n"  ]; then
+		weather_icon=" "
+		weather_quote="It's gonna snow tonight \nMake sure you get up early tomorrow to see the sights..."
+	elif [ "$weather_icon_code" == "40d"  ]; then
+		weather_icon=" "
+		weather_quote="Forecast says it's misty \nMake sure you don't get lost on your way..."
+	elif [ "$weather_icon_code" == "40n"  ]; then
+		weather_icon=" "
+		weather_quote="Forecast says it's a misty night \nDon't go anywhere tonight or you might get lost..."
+	else 
+		weather_icon=" "
+		weather_quote="Sort of odd, I don't know what to forecast \nMake sure you have a good time!"
+	fi
+	echo "$weather_icon" >  ${cache_weather_icon}
+	echo "$weather_description" > ${cache_weather_stat}
+	echo "$weather_temp""°C" > ${cache_weather_degree}
+	echo -e "$weather_quote" > ${cache_weather_quote}
+else
+	echo "Weather Unavailable" > ${cache_weather_stat}
+	echo " " > ${cache_weather_icon}
+	echo -e "Ah well, no weather huh? \nEven if there's no weather, it's gonna be a great day!" > ${cache_weather_quote}
+	echo "-" > ${cache_weather_degree}
+fi
+
+case "$1" in
+	"getdata") echo "$weather"
+	;;
+	"icon") cat "$cache_weather_icon"
+    ;;
+	"temp") cat "$cache_weather_degree"
+    ;;
+	"stat") cat "$cache_weather_stat"
+    ;;
+	"quote") cat "$cache_weather_quote"
+    ;;
+esac

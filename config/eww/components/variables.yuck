@@ -1,8 +1,74 @@
-(defvar eww "eww -c $HOME/.config/eww/")
 (defvar launcher "$HOME/.config/rofi/scripts/appmenu")
-(defvar recorder "$HOME/.config/rofi/scripts/capmenu")
-(defvar battery "$HOME/.config/eww/scripts/battery")
-(defvar screencast-start "$HOME/.config/eww/scripts/screencast start")
-(defvar screencast-stop "$HOME/.config/eww/scripts/screencast stop")
+(defvar screencast-start "$HOME/.config/eww/scripts/screencast start &")
+(defvar screencast-stop "$HOME/.config/eww/scripts/screencast stop &")
 (defvar toggle-themes "$HOME/.config/eww/scripts/toggle-themes")
 (defvar clip-input "$HOME/.config/eww/scripts/clipboard input")
+
+(defvar audio-toggle "$HOME/.config/eww/scripts/audio toggle")
+(defpoll audio-status-icon :interval "1s" "$HOME/.config/eww/scripts/audio status_icon")
+(defpoll audio-status-class :interval "1s" "$HOME/.config/eww/scripts/audio status_class")
+
+(defvar network-toggle "$HOME/.config/eww/scripts/network toggle")
+(defpoll network-toggle-icon :interval "1s" "$HOME/.config/eww/scripts/network toggle_icon")
+(defpoll network-status :interval "1s" "$HOME/.config/eww/scripts/network status")
+(defpoll network-status-icon :interval "1s" "$HOME/.config/eww/scripts/network status_icon")
+(defpoll network-status-class :interval "1s" "$HOME/.config/eww/scripts/network status_class")
+
+(defvar bluetooth-toggle "$HOME/.config/eww/scripts/bluetooth toggle")
+(defpoll bluetooth-status-icon :interval "1s" "$HOME/.config/eww/scripts/bluetooth status_icon")
+(defpoll bluetooth-status-class :interval "1s" "$HOME/.config/eww/scripts/bluetooth status_class")
+
+(defvar notification-toggle "$HOME/.config/eww/scripts/notification toggle")
+(defpoll notification-status-icon :interval "1s" "$HOME/.config/eww/scripts/notification status_icon")
+(defpoll notification-status-class :interval "1s" "$HOME/.config/eww/scripts/notification status_class")
+
+(defpoll screencast-status-icon :interval "1s" "$HOME/.config/eww/scripts/screencast status_icon")
+(defpoll screencast-status-class :interval "1s" "$HOME/.config/eww/scripts/screencast status_class")
+
+(defvar music "kitty -o initial_window_width=420 \
+			  		 -o initial_window_height=270 \
+					 -o remember_window_size=no \
+					 ncmpcpp")
+
+(defpoll profile-face :interval "5m" "echo $HOME/.face")
+(defpoll profile-name :interval "5m" "cat /etc/passwd | grep $USER | awk -F  ':' '{print $5}'")
+(defpoll profile-username :interval "5m" "echo @$USER")
+
+(defpoll date-dayname :interval "1s" "date +%A")
+(defpoll date-day :interval "1s" "date +%d")
+(defpoll date-month :interval "1s" "date +%b")
+(defpoll date-year :interval "1s" "date +%Y")
+(defpoll time-hour :interval "1s" "date '+%H'")
+(defpoll time-min :interval "1s" "date '+%M'")
+
+(defpoll current-brightness :interval "1s" "brightnessctl info | grep 'Current brightness' | awk '{print $4}' | tr -d '()%'")
+(defpoll current-volume :interval "1s" "pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | sed 's/%//g'")
+
+(defpoll temperature :interval "1s" "sensors | grep 'Package id 0:' | awk '{print $4}' | sed -e 's|.0°C||' | tr -d '+'")
+(defpoll cpu-usage :interval "1s" "top -bn1 | grep 'Cpu(s)' | awk '{print $2}' | cut -d'.' -f1")
+(defpoll mem-usage :interval "1s" "free | awk '/Mem:/ {print int($3/$2 * 100.0)}'")
+(defpoll disk-capacity :interval "1s" "df / | awk 'FNR==2{print $5}' | tr -d '%'")
+(defpoll battery-capacity :interval "1s" "cat /sys/class/power_supply/BAT*/capacity")
+
+(defpoll network-icon :interval "1s" "$HOME/.config/eww/scripts/network icon")
+(defpoll battery-icon :interval "1s" "$HOME/.config/eww/scripts/battery icon")
+
+(defpoll weather-icon :interval "15m" "$HOME/.config/eww/scripts/weather icon")
+(defpoll weather-temp :interval "15m" "$HOME/.config/eww/scripts/weather temp")
+(defpoll weather-stat :interval "15m" "$HOME/.config/eww/scripts/weather stat")
+(defpoll weather-quote :interval "15m" "$HOME/.config/eww/scripts/weather quote")
+
+(defpoll music-cover :interval "1s" "$HOME/.config/eww/scripts/music cover")
+(defpoll music-title :interval "1s" "$HOME/.config/eww/scripts/music title")
+(defpoll music-artist :interval "1s" "$HOME/.config/eww/scripts/music artist")
+(defpoll music-status :interval "1s" "$HOME/.config/eww/scripts/music status")
+(defpoll music-toggle-icon :interval "1s" "$HOME/.config/eww/scripts/music ticon")
+
+(defpoll distro-name :interval "15m" "$HOME/.config/eww/scripts/sysinfo distro")
+(defpoll distro-logo :interval "15m" "$HOME/.config/eww/scripts/sysinfo logo")
+(defpoll distro-desktop :interval "15m" "$HOME/.config/eww/scripts/sysinfo desktop")
+(defpoll distro-kernel :interval "15m" "$HOME/.config/eww/scripts/sysinfo kernel")
+(defpoll distro-package :interval "15m" "$HOME/.config/eww/scripts/sysinfo package")
+(defpoll system-resolution :interval "15m" "$HOME/.config/eww/scripts/sysinfo resolution")
+(defpoll system-model :interval "15m" "$HOME/.config/eww/scripts/sysinfo model")
+(defpoll system-cpu :interval "15m" "$HOME/.config/eww/scripts/sysinfo cpu")

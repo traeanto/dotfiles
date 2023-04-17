@@ -1,12 +1,12 @@
 (include "components/variables.yuck")
 
-; Bar
-(include "components/bar/widgets.yuck")
-(include "components/bar/windows.yuck")
+; Panel
+(include "components/panel/widgets.yuck")
+(include "components/panel/windows.yuck")
 
-; Calendar
-(include "components/calendar/widgets.yuck")
-(include "components/calendar/windows.yuck")
+; Dashboard
+(include "components/dashboard/widgets.yuck")
+(include "components/dashboard/windows.yuck")
 
 ; Clipboard
 (include "components/clipboard/widgets.yuck")
@@ -15,6 +15,18 @@
 ; Screencast
 (include "components/screencast/widgets.yuck")
 (include "components/screencast/windows.yuck")
+
+; Calendar
+(include "components/calendar/widgets.yuck")
+(include "components/calendar/windows.yuck")
+
+; Network
+(include "components/network/widgets.yuck")
+(include "components/network/windows.yuck")
+
+; Battery
+(include "components/battery/widgets.yuck")
+(include "components/battery/windows.yuck")
 
 ; Question
 (include "components/question/widgets.yuck")

@@ -1,0 +1,89 @@
+#!/usr/bin/bash
+
+get_logo() {
+	DISTRO_ID="$(cat /etc/os-release | awk -F '=' '/ID/ { print $2 }' | head -n1)"
+	case "$DISTRO_ID" in
+		"artix") LOGO=""
+	    ;;
+	esac
+
+	echo $LOGO
+}
+
+get_distro() {
+	DISTRO="$(cat /etc/os-release | awk -F '"' '/PRETTY_NAME/ { print $2 }')"
+	echo $DISTRO
+}
+
+get_desktop() {
+	DESKTOP="$(echo $XDG_CURRENT_DESKTOP)"
+	echo $DESKTOP
+}
+
+get_kernel() {
+	KERNEL="$(uname -r)"
+	echo $KERNEL
+}
+
+get_package() {
+	PACKAGE_MANAGER=('xbps-install' 'apk' 'apt' 'pacman' 'nix' 'dnf' 'rpm' 'emerge')
+	for PACKAGE_MANAGER in ${PACKAGE_MANAGER[@]}; do
+		if command -v $PACKAGE_MANAGER 2>/dev/null>&2; then
+			case "$PACKAGE_MANAGER" in
+				xbps-install ) COUNT="$(xbps-query -l | wc -l)"
+			    ;;
+				apk ) COUNT="$(apk search | wc -l)"
+			    ;;
+				apt ) COUNT="$(apt list --installed 2>/dev/null | wc -l)"
+			    ;;
+				pacman ) COUNT="$(pacman -Q | wc -l)"
+			    ;;
+				nix ) COUNT="$(nix-env -qa --installed '*' | wc -l)"
+			    ;;
+				dnf ) COUNT="$(dnf list installed | wc -l)"
+			    ;;
+				rpm ) COUNT="$(rpm -qa | wc -l)"
+			    ;;
+				emerge ) COUNT="$(qlist -I | wc -l)"
+			    ;;
+			esac
+			echo "${COUNT} pkgs"
+			return
+		fi
+	done
+	echo 'Unknown'
+}
+
+get_resolution() {
+	RESOLUTION="$(cat /sys/class/drm/*/modes)"
+	echo $RESOLUTION
+}
+
+get_model() {
+    MODEL="$(cat /sys/devices/virtual/dmi/id/product_version)"
+	echo $MODEL
+}
+
+get_cpu() {
+	CPU="$(cat /proc/cpuinfo | grep -m1 'model name' | awk '{print $4,$6}' | sed -e 's|(R)||')"
+	echo $CPU
+}
+
+case "${1}" in
+	"distro") get_distro
+	;;
+	"logo") get_logo
+	;;
+	"desktop") get_desktop
+	;;
+	"kernel") get_kernel
+	;;
+	"package") get_package
+	;;
+	"model") get_model
+	;;
+	"resolution") get_resolution
+	;;
+	"cpu") get_cpu
+	;;
+esac

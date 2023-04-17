@@ -2,9 +2,12 @@
 ; Window Sections
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-; Calendar
-(defwindow calendar
+; Battery
+(defwindow battery-window
 	:monitor 0
 	:geometry	(geometry	:x "-10px"
+							:y "20px"
 							:anchor "left bottom")
-(cal))
+	:vexpand "false"
+	:hexpand "false"
+(battery-window))

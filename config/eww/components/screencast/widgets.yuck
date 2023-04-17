@@ -3,21 +3,21 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Indicator
-(defwidget indicator []
-	(box   :class "indicator"
-		   :orientation "v"
-	(literal	:content screencast-indicator)))
-(deflisten screencast-indicator "$HOME/.config/eww/scripts/screencast indicator")
+(defwidget screencast-indicator []
+	(box	:class "screencast-indicator"
+			:orientation "v"
+		(label :class "${screencast-status-class}"
+			   :text "${screencast-status-icon}")))
 
 ; Screencast
 (defwidget screencast []
-	(box   :class "eww_screencast"
-		   :orientation "v"
-		   :space-evenly "false"
-	(indicator)
-	(eventbox   :cursor "pointer"
-				(button		:class "screencast-start"
-							:onclick "${screencast-start}" ""))
-	(eventbox   :cursor "pointer"
-				(button		:class "screencast-stop"
-							:onclick "${screencast-stop}" ""))))
+	(box	:class "box_screencast"
+			:orientation "v"
+			:space-evenly "false"
+		(screencast-indicator)
+		(eventbox	:cursor "pointer"
+			(button	:class "btn_screencast"
+					:onclick "${screencast-start}" ""))
+		(eventbox	:cursor "pointer"
+			(button	:class "btn_screencast"
+					:onclick "${screencast-stop}" ""))))

@@ -1,0 +1,21 @@
+#!/usr/bin/bash
+
+open_battery() {
+	eww close network-window
+	eww close network-window-input
+
+	eww open --toggle battery-window
+}
+
+open_network() {
+	eww close battery-window
+	
+	eww open --toggle network-window	
+}
+
+case "${1}" in
+	"battery") open_battery
+    ;;
+	"network") open_network
+    ;;
+esac
